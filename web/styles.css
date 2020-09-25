@@ -44,6 +44,8 @@ header h1 {
 
 main {
     padding-left: 20px;
+    margin-top: 150px;
+    margin-bottom: 200px;
 }
 
 .link {
@@ -71,7 +73,7 @@ main {
     padding: 10px;
     margin-top: 10px;
     display: block;
-    width: 100%;
+    width: 85%;
 }
 
 .intro:hover {
