@@ -19,6 +19,7 @@ nav a {
     text-decoration: none;
     padding: 20px;
     margin: 10px;
+    display: block;
 }
 
 nav a:hover {
@@ -48,6 +49,11 @@ main {
 
 #intro-main {
     display: flex;
+}
+
+#intro-main img {
+    max-width: 80%;
+    height: auto;
 }
 
 .intro {
@@ -80,6 +86,7 @@ footer {
     text-align: center;
     padding: 20px;
     position: fixed;
-    left: 0;
+    left: 200px;
     bottom: 0;
+    width: 85%
 }
