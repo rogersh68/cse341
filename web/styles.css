@@ -11,14 +11,17 @@ nav {
 
 nav ul {
     list-style-type: none;
+    padding-left: 0;
+    position: sticky;
+    top: 0;
 }
 
 nav a {
     font-size: 20px;
     color: black;
     text-decoration: none;
-    padding: 20px;
-    margin: 10px;
+    padding: 10px;
+    margin: 5px;
     display: block;
 }
 
@@ -27,8 +30,11 @@ nav a:hover {
 }
 
 header {
-    width: 100%;
     background-image: url(images/header.jpg);
+    position: fixed;
+    left: 200px;
+    top: 0;
+    width: 85%
 }
 
 header h1 {
@@ -48,11 +54,13 @@ main {
 }
 
 #intro-main {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
 }
 
 #intro-main img {
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
 }
 
@@ -63,6 +71,7 @@ main {
     padding: 10px;
     margin-top: 10px;
     display: block;
+    width: 100%;
 }
 
 .intro:hover {
