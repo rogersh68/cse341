@@ -10,7 +10,6 @@ session_start();
     <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<?php print_r($_SESSION); ?>
     <?php
         echo "<h2>Items Purchased:</h2>";
         foreach ($_SESSION as $key => $value) {

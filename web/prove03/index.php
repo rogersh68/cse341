@@ -14,12 +14,11 @@ session_start();
         <h1>Browse</h1>
     </header>
     <main>
-    <?php print_r($_SESSION); ?>
         <form action="cart.php" method="post">
             <input type='checkbox' name="item_1" <?php if (isset($_SESSION['item_1'])) echo "checked" ?>>Item 1<br>
-            <input type='checkbox' name="item_2">Item 2<br>
-            <input type='checkbox' name="item_3">Item 3<br>
-            <input type='checkbox' name="item_4">Item 4<br>
+            <input type='checkbox' name="item_2" <?php if (isset($_SESSION['item_2'])) echo "checked" ?>>Item 2<br>
+            <input type='checkbox' name="item_3" <?php if (isset($_SESSION['item_3'])) echo "checked" ?>>Item 3<br>
+            <input type='checkbox' name="item_4" <?php if (isset($_SESSION['item_4'])) echo "checked" ?>>Item 4<br>
             <input type='submit' value="View Cart">
         </form>
     </main>
