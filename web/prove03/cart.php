@@ -12,19 +12,20 @@
     </header>
     <main>
         <?php 
+        print_r($_POST);
         if (empty($_POST)) {
 	        echo "Cart is currently empty. <a href='index.php'>Browse Items</a>";
         }
         else {
-	        foreach ($_POST as $item) {
-		        if (isset($item)) {
-			        echo $_POST[$item];
+	        foreach ($_POST as $key => $value) {
+		        if (isset($value)) {
+			        echo $_POST[$key];
                     echo "<a href='cart.php'>Delete</a><br>";
 		        }
 	        }
         }
         ?>
-        <button  type="button" onclick="checkout.php">Proceed to Checkout</button>
+        <a href="checkout.php">Proceed to Checkout</a>
     </main>
 </body>
 </html>
