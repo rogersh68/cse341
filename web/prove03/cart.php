@@ -14,25 +14,24 @@ session_start();
         <a href="index.php">Continue Browsing</a>
     </header>
     <main>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        
         <?php 
         
         if (empty($_POST)) {
 	        echo "Cart is currently empty. <a href='index.php'>Browse Items</a>";
         }
         else {
+            echo "<form method='post' action='<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>'>";
 	        foreach ($_POST as $key => $value) {
                 $_SESSION[$key] = $value;
                 echo $key;
-                echo "<input type='submit' name='$key' value='Delete'><br>"; //need to delete variable from session
+                echo "<a href='cart.php' onclick='<?php unset($_POST[$key]); ?>'>Delete</a><br>";
 	        }
+            echo "</form>";
         }
         ?>
-        </form>
         <a href="checkout.php">Proceed to Checkout</a>
-        <?php
-        print_r($_POST);
-        ?>
+        
     </main>
 </body>
 </html>
