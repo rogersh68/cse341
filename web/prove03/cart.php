@@ -14,8 +14,9 @@ session_start();
         <a href="index.php">Continue Browsing</a>
     </header>
     <main>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <?php 
-        //session_unset();
+        
         if (empty($_POST)) {
 	        echo "Cart is currently empty. <a href='index.php'>Browse Items</a>";
         }
@@ -23,11 +24,15 @@ session_start();
 	        foreach ($_POST as $key => $value) {
                 $_SESSION[$key] = $value;
                 echo $key;
-                echo "<a href='cart.php' onclick='<?php unset($_SESSION[$key]) ?>'>Delete</a><br>"; //need to delete variable from session
+                echo "<input type='submit' name='$key' value='Delete'><br>"; //need to delete variable from session
 	        }
         }
         ?>
+        </form>
         <a href="checkout.php">Proceed to Checkout</a>
+        <?php
+        print_r($_POST);
+        ?>
     </main>
 </body>
 </html>
