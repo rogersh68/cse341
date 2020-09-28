@@ -13,7 +13,7 @@
         <h1>CSE 341 Assignments</h1>
     </header>
     <main>
-        <h2>Coming Soon</h2>
+        <a href="prove03/index.php">Prove 03: Shopping Cart</a>
     </main>
     <footer>
         <?php echo date("F j, Y"); ?>
