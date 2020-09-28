@@ -16,7 +16,7 @@ session_start();
     <main>
     <?php print_r($_SESSION); ?>
         <form action="cart.php" method="post">
-            <input type='checkbox' name="item_1" <?php if (isset($_SESSION['item_1'])) echo "on" ?>>Item 1<br>
+            <input type='checkbox' name="item_1" <?php if (isset($_SESSION['item_1'])) echo "checked" ?>>Item 1<br>
             <input type='checkbox' name="item_2">Item 2<br>
             <input type='checkbox' name="item_3">Item 3<br>
             <input type='checkbox' name="item_4">Item 4<br>
