@@ -11,7 +11,7 @@ session_start();
 </head>
 <body>
     <header>
-        <h1>Browse</h1>
+        <h1>Browse Our Selection</h1>
     </header>
     <main>
         <form action="cart.php" method="post">
@@ -19,7 +19,7 @@ session_start();
             <input type='checkbox' name="item_2" <?php if (isset($_SESSION['item_2'])) echo "checked" ?>>Item 2<br>
             <input type='checkbox' name="item_3" <?php if (isset($_SESSION['item_3'])) echo "checked" ?>>Item 3<br>
             <input type='checkbox' name="item_4" <?php if (isset($_SESSION['item_4'])) echo "checked" ?>>Item 4<br>
-            <input type='submit' value="View Cart">
+            <input type='submit' class="submit" value="View Cart">
         </form>
     </main>
 </body>

@@ -10,13 +10,18 @@ session_start();
     <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <?php
-        echo "<h2>Items Purchased:</h2>";
-        foreach ($_SESSION as $key => $value) {
-                echo $key;
-	    }
-        echo "<h2>Shipping Address:</h2>";
-        echo $_POST['address'];
-    ?>
+    <header>
+        <h1>Confirmation</h1>
+    </header>
+    <main>
+        <?php
+            echo "<h2>Items Purchased:</h2>";
+            foreach ($_SESSION as $key => $value) {
+                    echo $key;
+	        }
+            echo "<h2>Shipping Address:</h2>";
+            echo $_POST['address'];
+        ?>
+    </main>
 </body>
 </html>

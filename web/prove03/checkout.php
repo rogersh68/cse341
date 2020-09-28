@@ -17,7 +17,7 @@ session_start();
         Address:
         <input type=text name="address" required>
         <a href="cart.php">Return to cart</a>
-        <input type=submit  value="Complete Purchase">
+        <input type="submit" class="submit" value="Complete Purchase">
     </form>
 </body>
 </html>

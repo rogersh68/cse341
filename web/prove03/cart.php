@@ -11,27 +11,42 @@ session_start();
 </head>
 <body>
     <header>
-        <a href="index.php">Continue Browsing</a>
+        <h1>Your Cart</h1>
     </header>
     <main>
-        
-        <?php 
-        
-        if (empty($_POST)) {
-	        echo "Cart is currently empty. <a href='index.php'>Browse Items</a>";
+       <?php 
+
+       foreach ($_POST as $key => $value) {
+              $_SESSION[$key] = $value;
+       }
+
+       if (empty($_SESSION)) {
+              echo "Cart is currently empty.";
+       }
+
+       else {
+       echo "<form method='post' action='<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>'>"
+              foreach ($_SESSION as $key => $value) {
+                    echo $key;
+                    echo 
+              }
+       echo"</form>"
+       }
+
+        //session_unset();
+        /*if (empty($_POST)) {
+            echo "Cart is currently empty. <a href='index.php'>Browse Items</a>";
         }
         else {
-            echo "<form method='post' action='<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>'>";
-	        foreach ($_POST as $key => $value) {
+            foreach ($_POST as $key => $value) {
                 $_SESSION[$key] = $value;
                 echo $key;
-                echo "<a href='cart.php' onclick='<?php unset($_POST[$key]); ?>'>Delete</a><br>";
-	        }
-            echo "</form>";
-        }
+                echo "<a href='cart.php' id='$key' onclick='delete.php'>Delete</a><br>"; //need to delete variable from session
+            }
+        }*/
         ?>
-        <a href="checkout.php">Proceed to Checkout</a>
-        
+        <a href="index.php">Continue Browsing</a>
+        <a class="submit" href="checkout.php">Proceed to Checkout</a>
     </main>
 </body>
 </html>
