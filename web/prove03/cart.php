@@ -18,10 +18,8 @@
         }
         else {
 	        foreach ($_POST as $key => $value) {
-		        if (isset($value)) {
-			        echo $_POST[$key];
-                    echo "<a href='cart.php'>Delete</a><br>";
-		        }
+                echo $_POST[$key];
+                echo "<a href='cart.php'>Delete</a><br>";
 	        }
         }
         ?>
