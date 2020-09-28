@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
     <header>
         <h1>Checkout</h1>
     </header>
-    <?php print_r($_POST); ?>
+    <?php print_r($_SESSION); ?>
     <form action="confirmation.php" method="post">
         Address:
         <input type=text name="address" required>

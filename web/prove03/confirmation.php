@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +10,10 @@
     <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<?php print_r($_POST); ?>
+<?php print_r($_SESSION); ?>
     <?php
         echo "<h2>Items Purchased:</h2>";
-        foreach ($_POST as $key => $value) {
+        foreach ($_SESSION as $key => $value) {
                 echo $key;
 	    }
         echo "<h2>Shipping Address:</h2>";

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +14,9 @@
         <h1>Browse</h1>
     </header>
     <main>
-    <?php print_r($_POST); ?>
+    <?php print_r($_SESSION); ?>
         <form action="cart.php" method="post">
-            <input type='checkbox' name="item_1" <?php if (isset($_POST['item_1'])) echo "on" ?>>Item 1<br>
+            <input type='checkbox' name="item_1" <?php if (isset($_SESSION['item_1'])) echo "on" ?>>Item 1<br>
             <input type='checkbox' name="item_2">Item 2<br>
             <input type='checkbox' name="item_3">Item 3<br>
             <input type='checkbox' name="item_4">Item 4<br>
