@@ -18,12 +18,13 @@
         else {
 	        foreach ($_POST as $item) {
 		        if (isset($item)) {
-			        echo $item;
+			        echo $_POST[$item];
+                    echo "<a href='cart.php'>Delete</a><br>";
 		        }
 	        }
         }
         ?>
-        <a href="#">Delete</a>
+        <button  type="button" onclick="checkout.php">Proceed to Checkout</button>
     </main>
 </body>
 </html>

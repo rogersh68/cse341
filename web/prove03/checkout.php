@@ -10,9 +10,9 @@
     <header>
         <h1>Checkout</h1>
     </header>
-    <form>
+    <form action="confirmation.php" method="post">
         Address:
-        <input type=text required>
+        <input type=text name="address" required>
         <a href="cart.php">Return to cart</a>
         <input type=submit  value="Complete Purchase">
     </form>
