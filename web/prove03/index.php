@@ -11,6 +11,7 @@
         <h1>Browse</h1>
     </header>
     <main>
+    <?php print_r($_POST); ?>
         <form action="cart.php" method="post">
             <input type='checkbox' name="item_1" <?php if (isset($_POST['item_1'])) echo "on" ?>>Item 1<br>
             <input type='checkbox' name="item_2">Item 2<br>

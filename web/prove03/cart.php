@@ -12,13 +12,12 @@
     </header>
     <main>
         <?php 
-        print_r($_POST);
         if (empty($_POST)) {
 	        echo "Cart is currently empty. <a href='index.php'>Browse Items</a>";
         }
         else {
 	        foreach ($_POST as $key => $value) {
-                echo $_POST[$key];
+                echo $key;
                 echo "<a href='cart.php'>Delete</a><br>";
 	        }
         }
