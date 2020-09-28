@@ -10,6 +10,7 @@
     <header>
         <h1>Checkout</h1>
     </header>
+    <?php print_r($_POST); ?>
     <form action="confirmation.php" method="post">
         Address:
         <input type=text name="address" required>
