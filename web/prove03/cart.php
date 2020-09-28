@@ -15,7 +15,7 @@ session_start();
     </header>
     <main>
         <?php 
-        session_unset();
+        //session_unset();
         if (empty($_POST)) {
 	        echo "Cart is currently empty. <a href='index.php'>Browse Items</a>";
         }
@@ -23,7 +23,7 @@ session_start();
 	        foreach ($_POST as $key => $value) {
                 $_SESSION[$key] = $value;
                 echo $key;
-                echo "<a href='cart.php' onclick='<?php session_unset($key) ?>'>Delete</a><br>"; //need to delete variable from session
+                echo "<a href='cart.php' onclick='<?php unset($_SESSION[$key]) ?>'>Delete</a><br>"; //need to delete variable from session
 	        }
         }
         ?>
