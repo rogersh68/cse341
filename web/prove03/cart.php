@@ -15,16 +15,18 @@ session_start();
     </header>
     <main>
        <?php 
-       
-
-    
-               foreach ($_SESSION as $key => $value) {
-                    echo $key;
+       if (isset($_SESSION['items'])){
+              foreach ($_SESSION['items'] as $item) {
+                    echo $item;
                     echo "<form action='items.php' method='post'>";
                     echo "<input type='submit' value='Delete'>";
-                    echo "<input type='hidden' name='delete' value='$key'>"
+                    echo "<input type='hidden' name='delete' value='$item'>"
                     echo "</form>";
-                }
+              }
+       }
+       else {
+              echo "Your Cart is currently empty.";
+       }
        
         ?>
         <a href="index.php">Continue Browsing</a>
