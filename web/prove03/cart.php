@@ -31,17 +31,6 @@ session_start();
                 }
        }
 
-        //session_unset();
-        /*if (empty($_POST)) {
-            echo "Cart is currently empty. <a href='index.php'>Browse Items</a>";
-        }
-        else {
-            foreach ($_POST as $key => $value) {
-                $_SESSION[$key] = $value;
-                echo $key;
-                echo "<a href='cart.php' id='$key' onclick='delete.php'>Delete</a><br>"; //need to delete variable from session
-            }
-        }*/
         ?>
         <a href="index.php">Continue Browsing</a>
         <a class="submit" href="checkout.php">Proceed to Checkout</a>

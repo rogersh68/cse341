@@ -14,6 +14,7 @@ session_start();
         <h1>Browse Our Selection</h1>
     </header>
     <main>
+    <?php print_r($_SESSION)?>
         <form action="items.php" method="post">
             <label for="item_1">Item 1</label>
             <input type='submit' name='item_1' id="item_1" value="Add to Cart">            
@@ -23,7 +24,7 @@ session_start();
             <input type='submit' name='item_2' id="item_2" value="Add to Cart">            
         </form>
 
-        <a href="cart.php">View Cart</a>
+        <a href="/cart.php">View Cart</a>
     </main>
 </body>
 </html>
