@@ -16,21 +16,19 @@ session_start();
     <main>
        <?php 
 
-       foreach ($_POST as $key => $value) {
-              $_SESSION[$key] = $value;
-       }
-
+       print_r($_SESSION);
        if (empty($_SESSION)) {
               echo "Cart is currently empty.";
        }
 
        else {
-       echo "<form method='post' action='<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>'>"
-              foreach ($_SESSION as $key => $value) {
+               foreach ($_SESSION as $key => $value) {
                     echo $key;
-                    echo 
-              }
-       echo"</form>"
+                    echo "<form action='items.php' method='post'>";
+                    echo "<input type='submit' value='Delete'>";
+                    echo "<input type='hidden' name='delete' value='$key'>"
+                    echo "</form>";
+                }
        }
 
         //session_unset();
