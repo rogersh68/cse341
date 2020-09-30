@@ -25,7 +25,6 @@ session_start();
         </form>
 
         <a href="cart.php">View Cart</a>
-        <a class="submit" href="checkout.php">Proceed to Checkout</a>
     </main>
 </body>
 </html>

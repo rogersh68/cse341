@@ -15,13 +15,9 @@ session_start();
     </header>
     <main>
        <?php 
-       /*
-       print_r($_SESSION);
-       if (empty($_SESSION)) {
-              echo "Cart is currently empty.";
-       }
+       
 
-       else {
+    
                foreach ($_SESSION as $key => $value) {
                     echo $key;
                     echo "<form action='items.php' method='post'>";
@@ -29,8 +25,7 @@ session_start();
                     echo "<input type='hidden' name='delete' value='$key'>"
                     echo "</form>";
                 }
-       }
-       */
+       
         ?>
         <a href="index.php">Continue Browsing</a>
         <a class="submit" href="checkout.php">Proceed to Checkout</a>
