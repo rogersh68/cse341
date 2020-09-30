@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <link href="styles.css" rel="stylesheet" type="text/css">
+    
 </head>
 <body>
     <header>
@@ -15,7 +15,7 @@ session_start();
     </header>
     <main>
        <?php 
-
+       /*
        print_r($_SESSION);
        if (empty($_SESSION)) {
               echo "Cart is currently empty.";
@@ -30,7 +30,7 @@ session_start();
                     echo "</form>";
                 }
        }
-
+       */
         ?>
         <a href="index.php">Continue Browsing</a>
         <a class="submit" href="checkout.php">Proceed to Checkout</a>

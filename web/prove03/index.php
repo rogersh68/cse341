@@ -24,7 +24,8 @@ session_start();
             <input type='submit' name='item_2' id="item_2" value="Add to Cart">            
         </form>
 
-        <a href="https://powerful-crag-77090.herokuapp.com/prove03/cart.php">View Cart</a>
+        <a href="cart.php">View Cart</a>
+        <a class="submit" href="checkout.php">Proceed to Checkout</a>
     </main>
 </body>
 </html>
