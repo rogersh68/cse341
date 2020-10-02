@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    
+    <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <header>
@@ -20,8 +20,9 @@ session_start();
               foreach ($_SESSION['items'] as $item) {
                     echo "<form action='items.php' method='post'>";
                     echo "<p>$item</p>";
+                    echo "<input type='hidden' name='delete' value='$item'>"
                     echo "<input type='submit' value='Delete'>";
-                    //echo "<input type='hidden' name='delete' value='$item'>"
+                    //
                     echo"</form>";
               }
               /*foreach ($_SESSION['items'] as $item) {

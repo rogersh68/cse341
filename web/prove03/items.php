@@ -7,6 +7,9 @@ $i = 0;
 	unset($_SESSION[$_POST['delete']]);
 	header('Location: cart.php');
 }*/
+if (isset($_POST['delete'])) {
+
+}
 
 if (isset($_SESSION['items'])) {
 	foreach ($_SESSION['items'] as $x) {
