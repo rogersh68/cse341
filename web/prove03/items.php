@@ -25,11 +25,18 @@ else {
 	$_SESSION['items'] = $items;
 	header('Location: index.php');
 //}*/
-$items = array();
-foreach ($_POST as $key => $value) {
-	$_SESSION[$key] = $value;
+if (array_key_exists($_SESSION['delete'])) {
+	unset($_SESSION[$_SESSION['delete']]);
+	unset($_SESSION['delete']);
+	header('Location: cart.php');
 }
-//array_merge($_SESSION['items'], $items);
-header('Location: index.php');
+else {
+	$items = array();
+	foreach ($_POST as $key => $value) {
+		$_SESSION[$key] = $value;
+	}
+	header('Location: index.php');
+}
+
 
 ?>
