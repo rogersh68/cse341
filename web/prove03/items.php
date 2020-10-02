@@ -25,7 +25,7 @@ else {
 	$_SESSION['items'] = $items;
 	header('Location: index.php');
 //}*/
-if (array_key_exists($_SESSION['delete'])) {
+if (isset($_SESSION['delete'])) {
 	unset($_SESSION[$_SESSION['delete']]);
 	unset($_SESSION['delete']);
 	header('Location: cart.php');
