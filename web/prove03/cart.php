@@ -16,7 +16,10 @@ session_start();
     <main>
        <?php 
        if (isset($_SESSION['items'])){
-              print_r($_SESSION['items']);
+              //print_r($_SESSION['items']);
+              foreach ($_SESSION['items'] as $item) {
+                    echo "<p>$item<span>Delete</span></p>";
+              }
               /*foreach ($_SESSION['items'] as $item) {
                     echo $item;
                     echo "<form action='items.php' method='post'>";
