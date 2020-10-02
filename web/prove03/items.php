@@ -1,15 +1,15 @@
 <?php
 session_start();
-$items = array();
-$i = 0;
 
-
-if (isset($_POST['delete'])) {
+if (array_key_exists($_POST['delete'])) {
 	unset($_SESSION['items'][$_POST['delete']);
 	header('Location: cart.php');
 }
 
 else {
+	$items = array();
+	$i = 0;
+
 	if (isset($_SESSION['items'])) {
 		foreach ($_SESSION['items'] as $x) {
 			$items[$i] = $x;
