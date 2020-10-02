@@ -18,6 +18,7 @@ session_start();
        print_r($_SESSION);
        if (isset($_SESSION)){
               foreach ($_SESSION as $key => $value) {
+                    $key = str_replace("_", " ", $key);
                     echo "<form action='items.php' method='post'>";
                     echo "<label for='$key'>$key</label>";
                     echo "<input type='submit' class='action-delete' value='Delete'>";

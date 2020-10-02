@@ -16,7 +16,7 @@ session_start();
     <main>
         <form action="items.php" method="post">
             <label for="Item 1">Item 1</label>
-            <input type='submit' class='action-browse' name='Item 1' value="Add to Cart">            
+            <input type='submit' class='action-browse' name='Item 1' id="item_1" value="Add to Cart">            
         </form>
         <form action="items.php" method="post">
             <label for="Item 2">Item 2</label>
