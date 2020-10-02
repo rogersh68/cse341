@@ -20,7 +20,12 @@ session_start();
                     echo "<p>$key</p>";
 	        }
             echo "<h2>Shipping Address:</h2>";
-            echo $_POST['address'];
+
+            //filter
+            $address = trim($_POST['address']);
+            $address = filter_var($address, FILTER_SANITIZE_STRING);
+
+            echo $address;
         ?>
     </main>
 </body>
