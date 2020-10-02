@@ -15,7 +15,6 @@ session_start();
     </header>
     <main>
        <?php 
-       print_r($_SESSION);
        if (isset($_SESSION)){
               foreach ($_SESSION as $key => $value) {
                     $key = str_replace("_", " ", $key);
