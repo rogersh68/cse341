@@ -11,8 +11,8 @@ else {*/
 	$i = 0;
 
 	if (isset($_SESSION['items'])) {
-		foreach ($_SESSION['items'] as $x) {
-			$items[$i] = $x;
+		foreach ($_SESSION['items'] as $key => $value) {
+			$items[$i] = $key => $value;
 			$i++;
 		}
 	}
