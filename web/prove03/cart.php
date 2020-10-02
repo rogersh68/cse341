@@ -19,8 +19,9 @@ session_start();
               //print_r($_SESSION['items']);
               foreach ($_SESSION['items'] as $item) {
                     echo "<form action='items.php' method='post'>";
-                    
-                    echo "<p>$item<span>Delete</span></p>";
+                    echo "<p>$item</p>";
+                    echo "<input type='submit' value='Delete'>";
+                    echo "<input type='hidden' name='delete' value='$item'>"
                     echo"</form>";
               }
               /*foreach ($_SESSION['items'] as $item) {
