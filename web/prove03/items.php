@@ -18,7 +18,7 @@ else {*/
 	}
 
 	foreach ($_POST as $key => $value) {
-		$items[$i] = $key;
+		$items[$i] = $key => $value;
 		$i++;
 	}
 
