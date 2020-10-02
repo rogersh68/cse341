@@ -17,9 +17,9 @@ session_start();
        <?php 
        if (isset($_SESSION)){
               foreach ($_SESSION as $key => $value) {
-                    $key = str_replace("_", " ", $key);
+                    $key2 = str_replace("_", " ", $key);
                     echo "<form action='items.php' method='post'>";
-                    echo "<label for='$key'>$key</label>";
+                    echo "<label for='$key'>$key2</label>";
                     echo "<input type='submit' class='action-delete' value='Delete'>";
                     echo "<input type='hidden' name='delete' value='$key'>";
                     echo"</form>";

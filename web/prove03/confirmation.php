@@ -17,8 +17,8 @@ session_start();
         <?php
             echo "<h2>Items Purchased:</h2>";
             foreach ($_SESSION as $key => $value) {
-                    $key = str_replace("_", " ", $key);
-                    echo "<p>$key</p>";
+                    $key2 = str_replace("_", " ", $key);
+                    echo "<p>$key2</p>";
 	        }
             echo "<h2>Shipping Address:</h2>";
 
