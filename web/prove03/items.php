@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-if (array_key_exists($_POST['delete'])) {
+/*if (array_key_exists($_POST['delete'])) {
 	unset($_SESSION['items'][$_POST['delete']);
 	header('Location: cart.php');
 }
 
-else {
+else {*/
 	$items = array();
 	$i = 0;
 
@@ -24,6 +24,6 @@ else {
 
 	$_SESSION['items'] = $items;
 	header('Location: index.php');
-}
+//}
 
 ?>
