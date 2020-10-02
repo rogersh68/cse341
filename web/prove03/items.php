@@ -27,9 +27,9 @@ else {
 //}*/
 $items = array();
 foreach ($_POST as $key => $value) {
-	$items[$key] = $value;
+	$_SESSION[$key] = $value;
 }
-array_merge($_SESSION['items'], $items);
+//array_merge($_SESSION['items'], $items);
 header('Location: index.php');
 
 ?>
