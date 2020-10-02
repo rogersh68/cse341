@@ -18,9 +18,9 @@ session_start();
        if (isset($_SESSION)){
               foreach ($_SESSION as $key => $value) {
                     echo "<form action='items.php' method='post'>";
-                    echo "<p>$key<span><input type='submit' value='Delete'></span></p>";
+                    echo "<label for='$key'>$key</label>";
+                    echo "<input type='submit' class='action-delete' value='Delete'>";
                     echo "<input type='hidden' name='delete' value='$key'>";
-                    //echo "";
                     echo"</form>";
               }
        }
@@ -29,8 +29,8 @@ session_start();
        }
        
         ?>
-        <a href="index.php">Continue Browsing</a>
-        <a class="submit" href="checkout.php">Proceed to Checkout</a>
+        <a class="return" href="index.php">Continue Browsing</a>
+        <a class="proceed" href="checkout.php">Proceed to Checkout</a>
     </main>
 </body>
 </html>

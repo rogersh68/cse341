@@ -16,24 +16,40 @@ main {
     padding: 20px;
 }
 
-.submit {
-    margin: 20px;
+form {
+    padding: 20px;
+    border-bottom: 2px solid gray;
+}
+
+.action-browse {
+    margin: 10px;
+    padding: 5px;
+    background-color: lightgreen;
+}
+
+.action-delete {
+    margin: 10px;
+    padding: 5px;
+    background-color: lightpink;
+}
+
+.proceed {
+    display: block;
+    margin: 20px auto;
+    border: 2px solid gold;
     width: 200px;
     padding: 10px;
-    font-size: 18px;
+    background-color: lightyellow;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
 }
 
-label {
+.return {
     display: block;
-    margin: 10px;
-    border-bottom: 2px solid gray;
+    margin: 20px;
 }
 
-input[type='checkbox'] {
-    margin: 10px;
-    border-bottom: 2px solid gray;
+.checkout {
+    border: none;
 }
-
-    input[type='checkbox']:last-child {
-        border-bottom: none;
-    }

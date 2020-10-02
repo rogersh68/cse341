@@ -13,11 +13,13 @@ session_start();
     <header>
         <h1>Checkout</h1>
     </header>
-    <form action="confirmation.php" method="post">
+    <main>
+    <form class='checkout' action="confirmation.php" method="post">
         Address:
         <input type=text name="address" required>
-        <a href="cart.php">Return to cart</a>
-        <input type="submit" class="submit" value="Complete Purchase">
+        <a class='return' href="cart.php">Return to cart</a>
+        <input type="submit" class="proceed" value="Complete Purchase">
     </form>
+    </main>
 </body>
 </html>
