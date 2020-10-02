@@ -9,7 +9,10 @@ $i = 0;
 }*/
 
 if (isset($_SESSION['items'])) {
-	$i = count($_SESSION['items']);
+	foreach ($_SESSION['items'] as $x) {
+		$items[$i] = $x;
+		$i++;
+	}
 }
 	foreach ($_POST as $key => $value) {
 		$items[$i] = $key;
