@@ -15,6 +15,7 @@ session_start();
     </header>
     <main>
        <?php 
+       print_r($_SESSION);
        if (isset($_SESSION)){
               foreach ($_SESSION as $key => $value) {
                     echo "<form action='items.php' method='post'>";
