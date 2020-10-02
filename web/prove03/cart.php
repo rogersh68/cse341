@@ -18,9 +18,9 @@ session_start();
        if (isset($_SESSION)){
               foreach ($_SESSION as $key => $value) {
                     echo "<form action='items.php' method='post'>";
-                    echo "<p>$key</p>";
+                    echo "<p>$key<span><input type='submit' value='Delete'></span></p>";
                     echo "<input type='hidden' name='delete' value='$key'>";
-                    echo "<input type='submit' value='Delete'>";
+                    //echo "";
                     echo"</form>";
               }
        }

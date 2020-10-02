@@ -16,8 +16,8 @@ session_start();
     <main>
         <?php
             echo "<h2>Items Purchased:</h2>";
-            foreach ($_SESSION['items'] as $item) {
-                    echo "<p>$item</p>";
+            foreach ($_SESSION as $key => $value) {
+                    echo "<p>$key</p>";
 	        }
             echo "<h2>Shipping Address:</h2>";
             echo $_POST['address'];
