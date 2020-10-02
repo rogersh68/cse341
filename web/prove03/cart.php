@@ -15,11 +15,11 @@ session_start();
     </header>
     <main>
        <?php 
-       if (isset($_SESSION['items'])){
-              foreach ($_SESSION['items'] as $item) {
+       if (isset($_SESSION)){
+              foreach ($_SESSION as $key => $value) {
                     echo "<form action='items.php' method='post'>";
-                    echo "<p>$item</p>";
-                    echo "<input type='hidden' name='delete' value='$item'>";
+                    echo "<p>$key</p>";
+                    echo "<input type='hidden' name='delete' value='$key'>";
                     echo "<input type='submit' value='Delete'>";
                     echo"</form>";
               }
