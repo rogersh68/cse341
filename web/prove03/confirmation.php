@@ -17,7 +17,7 @@ session_start();
         <?php
             echo "<h2>Items Purchased:</h2>";
             foreach ($_SESSION['items'] as $item) {
-                    echo $item;
+                    echo "<p>$item</p>";
 	        }
             echo "<h2>Shipping Address:</h2>";
             echo $_POST['address'];
