@@ -16,22 +16,13 @@ session_start();
     <main>
        <?php 
        if (isset($_SESSION['items'])){
-              //print_r($_SESSION['items']);
               foreach ($_SESSION['items'] as $item) {
                     echo "<form action='items.php' method='post'>";
                     echo "<p>$item</p>";
-                    echo "<input type='hidden' name='delete' value='".$item."'>";
+                    echo "<input type='hidden' name='delete' value='$item'>";
                     echo "<input type='submit' value='Delete'>";
-                    //
                     echo"</form>";
               }
-              /*foreach ($_SESSION['items'] as $item) {
-                    echo $item;
-                    echo "<form action='items.php' method='post'>";
-                    echo "<input type='submit' value='Delete'>";
-                    echo "<input type='hidden' name='delete' value='$item'>"
-                    echo "</form>";
-              }*/
        }
        else {
               echo "<p>Your Cart is currently empty.</p>";
