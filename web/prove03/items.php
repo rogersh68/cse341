@@ -6,7 +6,7 @@ session_start();
 	header('Location: cart.php');
 }
 
-else {*/
+else {
 	$items = array();
 	$i = 0;
 
@@ -24,6 +24,12 @@ else {*/
 
 	$_SESSION['items'] = $items;
 	header('Location: index.php');
-//}
+//}*/
+$items = array();
+foreach ($_POST as $key => $value) {
+	$items[$key] = $value;
+}
+array_merge($_SESSION['items'], $items);
+header('Location: index.php');
 
 ?>
