@@ -14,6 +14,7 @@
     </header>
     <main>
         <a href="prove03/index.php">Prove 03: Shopping Cart</a>
+        <a href="prove05/index.php">Prove 05: PHP Data Access</a>
     </main>
     <footer>
         <?php echo date("F j, Y"); ?>
