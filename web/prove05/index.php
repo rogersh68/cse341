@@ -28,7 +28,9 @@ include 'common/connection.php';
             echo "<img src='".$row['inventoryimg']."' alt='".$row['inventoryname']."'>";
             echo "<div><h2>".$row['inventoryname']."</h2>";
             echo "<p>".$row['inventorydesc']."</p>";
-            echo "<a title='purchase' href='purchase.php' class='purchase_link'>Purchase</a></div></div>";
+            echo "<form action='purchase.php' method='post'>";
+            echo "<input type='submit' class='purchase_btn' value='Purchase'>";
+            echo "<input type='hidden' name='item' value='".$row['inventoryid']."'></form></div></div>";
         }
         ?>
 
