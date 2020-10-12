@@ -20,8 +20,10 @@ include 'common/connection.php';
     <main>
         <h1>Purchase</h1>  
         <?php
+        print_r($_POST);
         //get and display item being purchased
         try {
+            
             // get id from form
             $inventoryId = $_POST['item'];
 
@@ -54,7 +56,7 @@ include 'common/connection.php';
         }
         catch (Exception $e){
             echo "Something went wrong. Please try again.";
-            echo "<a href='./'>Home</a>";
+            echo "<br><a href='./'>Home</a>";
         }
         ?> 
     </main>
