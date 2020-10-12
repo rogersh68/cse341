@@ -1,6 +1,6 @@
 <?php 
 // connect to the database
-//include $_SERVER['DOCUMENT_ROOT'].'common/connection.php'; 
+include 'common/connection.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,6 @@
 <body>
     <?php 
     // display the header
-    //include $_SERVER['DOCUMENT_ROOT'].'common/header.php'; 
     include 'common/header.php';
     ?>
 
@@ -23,14 +22,14 @@
 
         <?php
         // display each inventory item
-        /*foreach ($db->query('SELECT inventoryname, inventorydesc, inventoryimg FROM inventory') as $row)
+        foreach ($db->query('SELECT inventoryname, inventorydesc, inventoryimg FROM inventory') as $row)
         {
             echo "<div class='item_overview'>";
             echo "<img src='".$row['inventoryimg']."' alt='".$row['inventoryname']."'>";
             echo "<div><h2>".$row['inventoryname']."</h2>";
             echo "<p>".$row['inventorydesc']."</p>";
             echo "<a title='purchase' href='purchase.php' class='purchase_link'>Purchase</a></div></div>";
-        }*/
+        }
         ?>
 
     <!-- Inventory Placeholder
@@ -48,7 +47,7 @@
 
     <?php 
     // display the footer
-    include $_SERVER['DOCUMENT_ROOT'].'common/footer.php'; 
+    include 'common/footer.php'; 
     ?>
 </body>
 </html>
