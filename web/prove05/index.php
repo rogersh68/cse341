@@ -22,7 +22,7 @@ include 'common/connection.php';
 
         <?php
         // display each inventory item
-        foreach ($db->query('SELECT inventoryname, inventorydesc, inventoryimg FROM inventory') as $row)
+        foreach ($db->query('SELECT * FROM inventory') as $row)
         {
             print_r($row);
             echo "<div class='item_overview'>";
