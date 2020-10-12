@@ -14,7 +14,8 @@
 <body>
     <?php 
     // display the header
-    include $_SERVER['DOCUMENT_ROOT'].'common/header.php'; 
+    //include $_SERVER['DOCUMENT_ROOT'].'common/header.php'; 
+    include 'common/header.php';
     ?>
 
     <main>
