@@ -20,10 +20,8 @@ include 'common/connection.php';
     <main>
         <h1>Commission</h1>
         <form action="account.php" method="post">
+            <label for="creator">Who would you like to commission?</label>
             <?php 
-            //get creators and their user info from db
-
-
             //populate select list with creators
             echo "<select name='creator' id='creatorList'>";
             echo "<option>Select</option>";
@@ -32,6 +30,12 @@ include 'common/connection.php';
             }
             echo "</select>"
             ?>
+
+            <label for="commDesc">What would you like to commission?</label>
+            <textarea name="commDesc"></textarea>
+
+            <p>Please note that whoever you choose must accept the commission.</p>
+            <input type="submit" value="Send Request">
         </form>
 
     </main>
