@@ -26,22 +26,21 @@ include 'common/connection.php';
             
             // get id from form
             $inventoryId = $_POST['item'];
-            echo "id: ".$inventoryId;
+            
             // query database for the item
             $stmt = $db->prepare('SELECT * FROM inventory WHERE inventoryid=:id');
             $stmt->bindValue(':id', $inventoryId, PDO::PARAM_INT);
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            print_r($itemInfo);
-            echo $itemInfo[0]["inventoryname"];
+            
             //display the item
             echo "<div class='item_overview'>";
-            echo "<img src='".$itemInfo['inventoryimg']."' alt='".$itemInfo['inventoryname']."'>";
-            echo "<div><h2>".$itemInfo['inventoryname']."</h2>";
-            echo "<p>".$itemInfo['inventorydesc']."</p></div></div>";
+            echo "<img src='".$itemInfo[0]['inventoryimg']."' alt='".$itemInfo[0]['inventoryname']."'>";
+            echo "<div><h2>".$itemInfo[0]['inventoryname']."</h2>";
+            echo "<p>".$itemInfo[0]['inventorydesc']."</p></div></div>";
 
             // check if item is under a userid already
-            if (isset($itemInfo['userid'])) {
+            if (isset($itemInfo[0]['userid'])) {
                 echo "Sorry, this item is currently unavailable.";
                 echo "<a href='./'>Continue Browsing</a>";
             }
