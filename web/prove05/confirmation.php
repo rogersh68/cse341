@@ -24,13 +24,13 @@ include 'common/connection.php';
         try {
             // get item id from form
             $inventoryId = $_POST['item'];
-
+            print_r($_POST);
             // query database for item
             $stmt = $db->prepare('SELECT inventoryname FROM inventory WHERE inventoryid=:id');
             $stmt->bindValue(':id', $inventoryId, PDO::PARAM_INT);
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            print_r($itemInfo);
             // add userId to row in database
 
             // display item summary
