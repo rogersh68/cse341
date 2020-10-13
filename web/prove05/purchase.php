@@ -20,7 +20,7 @@ include 'common/connection.php';
     <main>
         <h1>Purchase</h1>  
         <?php
-        print_r($_POST);
+  
         //get and display item being purchased
         try {
             
