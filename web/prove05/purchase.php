@@ -26,13 +26,13 @@ include 'common/connection.php';
             
             // get id from form
             $inventoryId = $_POST['item'];
-
+            echo "id: ".$inventoryId;
             // query database for the item
             $stmt = $db->prepare('SELECT * FROM inventory WHERE inventoryid=:id');
             $stmt->bindValue(':id', $inventoryId, PDO::PARAM_INT);
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            print_r($itemInfo);
             //display the item
             echo "<div class='item_overview'>";
             echo "<img src='".$itemInfo['inventoryimg']."' alt='".$itemInfo['inventoryname']."'>";
