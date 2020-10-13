@@ -33,7 +33,7 @@ include 'common/connection.php';
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
             print_r($itemInfo);
-            echo $itemInfo['inventoryname'];
+            echo $itemInfo[0]["inventoryname"];
             //display the item
             echo "<div class='item_overview'>";
             echo "<img src='".$itemInfo['inventoryimg']."' alt='".$itemInfo['inventoryname']."'>";

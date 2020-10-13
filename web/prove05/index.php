@@ -24,7 +24,6 @@ include 'common/connection.php';
         // display each inventory item
         foreach ($db->query('SELECT * FROM inventory') as $row)
         {
-            print_r($row);
             echo "<div class='item_overview'>";
             echo "<img src='".$row['inventoryimg']."' alt='".$row['inventoryname']."'>";
             echo "<div><h2>".$row['inventoryname']."</h2>";
