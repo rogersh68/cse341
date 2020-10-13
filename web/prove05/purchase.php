@@ -50,7 +50,7 @@ include 'common/connection.php';
                 echo "<label>Address</label>";
                 echo "<input type='text' name='address'>";
                 echo "<input type='submit' value='Complete Purchase'>";
-                echo "<input type='hidden' name='item' value='".$inventoryID."'></form>";
+                echo "<input type='hidden' name='item' value='".$inventoryId."'></form>";
             }
             
         }
