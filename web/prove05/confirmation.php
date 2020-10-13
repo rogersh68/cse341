@@ -24,19 +24,20 @@ include 'common/connection.php';
         try {
             // get item id from form
             $inventoryId = $_POST['item'];
-            print_r($_POST);
+          
             // query database for item
             $stmt = $db->prepare('SELECT inventoryname FROM inventory WHERE inventoryid=:id');
             $stmt->bindValue(':id', $inventoryId, PDO::PARAM_INT);
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            print_r($itemInfo);
+           
             // add userId to row in database
 
             // display item summary
             echo "<h2>Summary</h2>";
-            echo "<p>".$itemInfo[0]['inventoryname']."will be shipped to:</p>";
-            echo "<p>".$_POST['address']."</p>";
+            echo "<p>Your<b>".$itemInfo[0]['inventoryname']."</b> will be shipped to:</p>";
+            echo "<p><b>".$_POST['address']."<b></p>";
+            echo "<p>Thank you for purchase.</p>"
         }
         catch (Exception $e) {
             echo "Something went wrong. Please try again.";
