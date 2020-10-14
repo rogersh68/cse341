@@ -160,8 +160,9 @@ footer {
 .proceed_link {
     display: block;
     background-color: #5B4850;
-    color: white;
-    width: 120px;
+    color: #EDE8EA;
+    text-align: center;
+    width: 140px;
     padding: 10px;
     text-decoration: none;
     font-weight: bold;
