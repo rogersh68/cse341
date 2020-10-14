@@ -43,7 +43,7 @@ include 'common/connection.php';
             echo "<div class='confirmation_div'>Something went wrong. Please try again.";
         }
         ?>  
-        <a title="browse" href="./">Continue Browsing</a></div>
+        <a class="proceed_link" title="browse" href="./">Continue Browsing</a></div>
     </main>
 
     <?php 
