@@ -71,6 +71,8 @@ main h1 {
     margin-bottom: 30px;
     font-size: 50px;
     font-family: cursive;
+    color: #725A64;
+    border-bottom: 3px dashed #725A64;
 }
 
 .item_overview {
@@ -118,4 +120,5 @@ footer {
     background-color: #7F636E;
     padding: 20px;
     margin-left: 150px;
+    text-align: center;
 }
