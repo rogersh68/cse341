@@ -38,7 +38,7 @@ include 'common/connection.php';
             }
             else {
                 echo "<form action='purchase.php' method='post'>";
-                echo "<input type='submit' class='purchase_btn' value='Purchase'>";
+                echo "<input type='submit' class='proceed_btn' value='Purchase'>";
                 echo "<input type='hidden' name='item' value='".$row['invid']."'></form></div></div>";
             }
             

@@ -121,7 +121,7 @@ main div img {
     color: #F15025;
 }
 
-.purchase_btn {
+.proceed_btn {
     background-color: #44CF6C;
     border-radius: 5px;
     padding: 10px;
@@ -150,9 +150,4 @@ footer {
     display: block;
     padding: 10px;
     margin-bottom: 15px;
-}
-
-.proceed_btn {
-    display: block;
-
 }
