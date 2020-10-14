@@ -14,11 +14,13 @@
 
     <main>
         <h1>About Christina's Creations</h1>
-        <p>Christina's Creations gives you the opportunity to donate or purchase crafts and other creations. 
-        The proceeds for any item purchased will be donated to charity.</p>
-        <a href="./">Take a look at the available crafts</a>
-        <p>or</p>
-        <a href="account.php">Sign up to donate your creations</a>   
+        <div class="about_div">
+            <p>Christina's Creations gives you the opportunity to donate or purchase crafts and other creations.<br> 
+            The proceeds for any item purchased will be donated to charity.</p>
+            <a class="proceed_link" href="./">Browse Items</a>
+            <p>or</p>
+            <a class="proceed_link" href="account.php">Sign Up</a>   
+        </div>
     </main>
 
     <?php 

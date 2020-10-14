@@ -162,6 +162,11 @@ footer {
     margin-bottom: 60px;
 }
 
+.about_div {
+    padding-left: 40px;
+    padding-bottom: 50px;
+}
+
 .proceed_link {
     display: block;
     background-color: #5B4850;
