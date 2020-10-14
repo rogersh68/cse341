@@ -49,10 +49,11 @@ include 'common/connection.php';
             }
             else {
                 //display confirmation form
+                echo "<h2 class='subtitle'>Please fill out your information</h2>";
                 echo "<form class='confirmation_form' action = 'confirmation.php' method='post'";
                 echo "<label>Address</label>";
                 echo "<input type='text' name='address'>";
-                echo "<input type='submit' value='Complete Purchase'>";
+                echo "<input class='proceed_btn' type='submit' value='Complete Purchase'>";
                 echo "<input type='hidden' name='item' value='".$invId."'></form>";
             }
             

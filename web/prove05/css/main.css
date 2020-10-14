@@ -142,6 +142,17 @@ footer {
 
 }
 
-.confirmation_form label, .confirmation_form input {
+.confirmation_form label {
     display: block;
+}
+
+.confirmation_form input {
+    display: block;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.proceed_btn {
+    display: block;
+
 }
