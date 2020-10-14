@@ -55,10 +55,11 @@ nav li {
 
 .logo {
     width: 200px;
-    color: #ffffff;
+    color: #DBD2D6;
 }
 .logo_header_div h1 {
     font-size: 75px;
+    color: #DBD2D6;
 }
 
 main {
@@ -74,17 +75,16 @@ main h1 {
     margin-bottom: 0px;
     font-size: 50px;
     font-family: cursive;
-    color: #725A64;
+    color: #5B4850;
     border-bottom: 3px dashed #725A64;
 }
 
 .subtitle {
     padding: 20px;
     padding-top: 0;
-    margin-top: 10px;
-    
+    margin-top: 15px;
     text-align: center;
-    color: #725A64;
+    color: #5B4850;
 }
 
 .item_overview {
