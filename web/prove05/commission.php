@@ -35,7 +35,7 @@ include 'common/connection.php';
                 <label for="commDesc">What would you like to commission?</label>
                 <textarea name="commDesc"></textarea>
 
-                <p class="general_notice">Please note your request must be accepted.</p>
+                <p class="general_notice">Please note your request <br>must be accepted.</p>
                 <input class="proceed_btn" type="submit" value="Send Request">
             </form>
 

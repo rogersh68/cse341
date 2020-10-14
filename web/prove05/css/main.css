@@ -221,7 +221,7 @@ footer {
 }
 
 .creators_div {
-    height: 300px;
+    height: 320px;
     overflow: scroll;
     background-color: #F5F5F5;
 }
@@ -242,7 +242,7 @@ footer {
 }
 
 .comm_creators_container {
-    margin-left: 40px;
+    margin-left: 50px;
 }
 
 .comm_creators_container .subtitle {
