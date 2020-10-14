@@ -209,6 +209,17 @@ footer {
     display: block;
 }
 
+.commissions_div form select {
+    width: 200px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.commissions_div form textarea {
+    width: 200px;
+    height: 100px;
+}
+
 .creators_div {
     height: 300px;
     overflow: scroll;
@@ -236,4 +247,5 @@ footer {
 
 .comm_creators_container .subtitle {
     text-align: left;
+    margin-bottom: 0;
 }
