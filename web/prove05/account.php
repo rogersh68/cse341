@@ -7,6 +7,8 @@ include 'common/connection.php';
 
 // check if attempted login
 if(isset($_POST['email'])) {
+    echo "EMAIL IS SET, LOGGING IN"
+    /*
     $email = $_POST['email'];
     $password = $_POSt['password'];
 
@@ -24,12 +26,13 @@ if(isset($_POST['email'])) {
     else {
         // log the user in
         $_SESSION['logggedin'] = true;
-    }
+    }*/
 }
 
 // redirect to login page if user is not logged in
 if(!$_SESSION['loggedin']) {
-    header('Location: login.php');
+    echo "NOT LOGGED IN"
+    //header('Location: login.php');
 }
 ?>
 
