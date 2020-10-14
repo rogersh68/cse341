@@ -62,7 +62,7 @@ nav li {
 main {
     margin-left: 150px;
     margin-top: 200px;
-    background-color: #C0AFB6;
+    background-color: #D2C6CB;
 }
 
 main h1 {
@@ -77,8 +77,8 @@ main h1 {
     display: grid;
     grid-template-columns: 300px 1fr;
     border-bottom: 3px solid #725A64;
-    margin-bottom: 10px;
     padding: 15px;
+    padding-bottom: 25px;
 }
 
 main div img {
@@ -108,22 +108,14 @@ main div img {
 
 .purchase_btn {
     background-color: #44CF6C;
-    padding: 10px;
-}
-.purchase_link {
-    display: block;
-    text-decoration: none;
-    background-color: green;
     border-radius: 5px;
-    color: white;
     padding: 10px;
-    margin-top: 30px;
-    width: 80px;
-    text-align: center;
+    font-weight: bold;
 }
 
 footer {
     background-color: #7F636E;
     padding: 20px;
+    margin: auto;
     margin-right: 150px;
 }
