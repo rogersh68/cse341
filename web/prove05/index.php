@@ -25,28 +25,24 @@ include 'common/connection.php';
 
         <?php
         // display each inventory item
-        foreach ($db->query('SELECT * FROM inventory') as $row)
+        foreach ($db->query('SELECT invid, invname, invdesc, invimg, inventory.userid, firstname, lastname FROM inventory JOIN public.user AS u ON inventory.creatorid = u.userid') as $row)
         {
             echo "<div class='item_overview'>";
-            echo "<img src='".$row['inventoryimg']."' alt='".$row['inventoryname']."'>";
-            echo "<div><h2>".$row['inventoryname']."</h2>";
-            echo "<p>".$row['inventorydesc']."</p>";
-            echo "<form action='purchase.php' method='post'>";
-            echo "<input type='submit' class='purchase_btn' value='Purchase'>";
-            echo "<input type='hidden' name='item' value='".$row['inventoryid']."'></form></div></div>";
+            echo "<img src='".$row['invimg']."' alt='".$row['invname']."'>";
+            echo "<div><h2>".$row['invname']."</h2>";
+            echo "<p>".$row['invdesc']."</p>";
+            echo "<p>Created by: ".$row['firstname']." ".$row['lastname']."</p>";
+            if (isset($row['userid'])) {
+                echo "<p>SOLD</p>";
+            }
+            else {
+                echo "<form action='purchase.php' method='post'>";
+                echo "<input type='submit' class='purchase_btn' value='Purchase'>";
+                echo "<input type='hidden' name='item' value='".$row['invid']."'></form></div></div>";
+            }
+            
         }
         ?>
-
-    <!-- Inventory Placeholder
-        <div class="item_overview">
-            <img src="images/placeholder.svg" alt="item name">
-            <div>
-                <h2>Item Name</h2>
-                <p>Item description will go here.</p>
-                <a title="purchase" href="purchase.php" class="purchase_link">Purchase</a>
-            </div>
-        </div>
-    -->
    
     </main>
 

@@ -25,8 +25,8 @@ include 'common/connection.php';
             //populate select list with creators
             echo "<select name='creator' id='creatorList'>";
             echo "<option>Select</option>";
-            foreach ($db->query('SELECT c.creatorid, u.name FROM creator AS c JOIN public.user AS u ON c.userid = u.userid') as $row) {
-                echo "<option value='".$row['creatorId']."'>".$row['name']."</option>";
+            foreach ($db->query('SELECT userid, firstname, lastname FROM public.user WHERE creator = TRUE') as $row) {
+                echo "<option value='".$row['userid']."'>".$row['firstname']." ".$row['lastname']."</option>";
             }
             echo "</select>"
             ?>
@@ -37,6 +37,20 @@ include 'common/connection.php';
             <p>Please note that whoever you choose must accept the commission.</p>
             <input type="submit" value="Send Request">
         </form>
+
+        <h2>Get to know our creators</h2>
+
+        <div class="creators_div">
+            <?php
+            foreach ($db->query('SELECT firstname, lastname, userimg, creatorDesc FROM public.user WHERE creator = TRUE') as $row) {
+                echo "<div class='creator_desc'>";
+                echo "<img src='".$row['userimg']."' alt='creator'>";
+                echo "<h3>".$row['firstname']." ".$row['lastname']."</h3>";
+                echo "<p>".$row['creatorDesc']."</p>";
+                echo "</div>";
+            }
+            ?>
+        </div>
 
     </main>
 

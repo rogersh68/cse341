@@ -14,11 +14,11 @@ header {
     width: 100%;
 }
 
-.logo_div {
+.logo_header_div {
     display: flex;
 }
 
-.account {
+.account_header_link {
     display: block;
 }
 

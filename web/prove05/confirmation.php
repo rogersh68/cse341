@@ -23,19 +23,19 @@ include 'common/connection.php';
         //get and display purchase summary for item
         try {
             // get item id from form
-            $inventoryId = $_POST['item'];
+            $invId = $_POST['item'];
           
             // query database for item
-            $stmt = $db->prepare('SELECT inventoryname FROM inventory WHERE inventoryid=:id');
-            $stmt->bindValue(':id', $inventoryId, PDO::PARAM_INT);
+            $stmt = $db->prepare('SELECT invname FROM inventory WHERE invid=:invid');
+            $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
            
-            // add userId to row in database
+            /*** TODO: add userid to row in database ***/ 
 
             // display item summary
             echo "<h2>Summary</h2>";
-            echo "<p>Your <b>".$itemInfo[0]['inventoryname']."</b> will be shipped to:</p>";
+            echo "<p>Your <b>".$itemInfo[0]['invname']."</b> will be shipped to:</p>";
             echo "<p><b>".$_POST['address']."</b></p>";
             echo "<p>Thank you for purchase.</p>";
         }

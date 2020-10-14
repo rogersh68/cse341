@@ -30,7 +30,7 @@ include 'common/connection.php';
 
             <?php
             if(isset($_SESSION['login_message'])){
-                echo "<p class='warning'>".$_SESSION['login_message']."</p>";
+                echo "<p class='notice'>".$_SESSION['login_message']."</p>";
             }
             ?>
 
