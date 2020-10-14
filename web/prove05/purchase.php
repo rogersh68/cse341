@@ -49,7 +49,7 @@ include 'common/connection.php';
             }
             else {
                 //display confirmation form
-                echo "<form action = 'confirmation.php' method='post'";
+                echo "<form class='confirmation_form' action = 'confirmation.php' method='post'";
                 echo "<label>Address</label>";
                 echo "<input type='text' name='address'>";
                 echo "<input type='submit' value='Complete Purchase'>";
