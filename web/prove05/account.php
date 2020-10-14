@@ -4,7 +4,7 @@ session_start();
 
 // check if attempted login
 if(isset($_POST['email'])) {
-    print "Logging in";
+    echo "Logging in";
         
     // connect to the database
     include 'common/connection.php'; 
@@ -31,8 +31,7 @@ if(isset($_POST['email'])) {
 
 // redirect to login page if user is not logged in
 if(!$_SESSION['loggedin']) {
-    print "NOT LOGGED IN";
-    //header('Location: login.php');
+    header('Location: login.php');
 }
 
 ?>
