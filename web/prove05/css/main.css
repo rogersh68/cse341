@@ -169,7 +169,7 @@ footer {
 }
 
 .about_div a:first-of-type {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .center_p {
@@ -191,4 +191,28 @@ footer {
 .proceed_link:hover {
     background-color: #45363C;
     color: #DBD2D6;
+}
+
+.commissions_div {
+    display: flex;
+    padding-left: 40px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.commissions_div form label{
+    display: block;
+}
+
+.creators_div {
+    height: 500px;
+    overflow: scroll;
+    background-color: #F5F5F5;
+}
+
+.creator_desc {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    border-bottom: 3px solid #725A64;
+    padding: 25px;
 }
