@@ -139,7 +139,7 @@ if(!$_SESSION['loggedin']) {
             foreach($rows as $row) {
                 echo "<div class='account_comm_row'>";
                 echo "<p>".$row['commdesc']."</p>";
-                echo "<p>Requested sent to: ".$row['firstname']." ".$row['lastname']."</p>";
+                echo "<p>Request sent to: ".$row['firstname']." ".$row['lastname']."</p>";
                 if ($row['accepted']) {
                     echo "<p class='comm_accepted-p'>Commission Accepted</p>";
                 }

@@ -42,11 +42,11 @@ include 'common/connection.php';
 
         <div class="creators_div">
             <?php
-            foreach ($db->query('SELECT firstname, lastname, userimg, creatorDesc FROM public.user WHERE creator = TRUE') as $row) {
+            foreach ($db->query('SELECT firstname, lastname, userimg, creatordesc FROM public.user WHERE creator = TRUE') as $row) {
                 echo "<div class='creator_desc'>";
                 echo "<img src='".$row['userimg']."' alt='creator'>";
                 echo "<h3>".$row['firstname']." ".$row['lastname']."</h3>";
-                echo "<p>".$row['creatorDesc']."</p>";
+                echo "<p>".$row['creatordesc']."</p>";
                 echo "</div>";
             }
             ?>

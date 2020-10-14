@@ -37,7 +37,7 @@ include 'common/connection.php';
             echo "<h2>Summary</h2>";
             echo "<p>Your <b>".$itemInfo[0]['invname']."</b> will be shipped to:</p>";
             echo "<p><b>".$_POST['address']."</b></p>";
-            echo "<p>Thank you for purchase.</p>";
+            echo "<p>Thank you for your purchase.</p>";
         }
         catch (Exception $e) {
             echo "Something went wrong. Please try again.";
