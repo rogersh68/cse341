@@ -4,12 +4,34 @@ session_start();
 
 // check if attempted login
 if(isset($_POST['email'])) {
-    echo "Logging in";
+    print "Logging in";
+        
+    // connect to the database
+    include 'common/connection.php'; 
+    
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $db->prepare('SELECT userid, password FROM public.user WHERE email=:email');
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+    $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //send user back to login if passwords don't match
+    if($password != $userInfo[0]['password']) {
+        $_SESSION['login_message'] = "Incorrect password";
+        header('Location: login.php');
+    }
+    else {
+        // log the user in
+        $_SESSION['loggedin'] = TRUE;
+    }
+    
 }
 
 // redirect to login page if user is not logged in
 if(!$_SESSION['loggedin']) {
-    echo "NOT LOGGED IN";
+    print "NOT LOGGED IN";
     //header('Location: login.php');
 }
 
