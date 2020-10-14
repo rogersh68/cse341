@@ -210,13 +210,13 @@ footer {
 }
 
 .commissions_div form select {
-    width: 200px;
+    width: 250px;
     padding: 10px;
     margin-bottom: 15px;
 }
 
 .commissions_div form textarea {
-    width: 200px;
+    width: 250px;
     height: 100px;
 }
 
