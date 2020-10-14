@@ -18,7 +18,7 @@
             <p>Christina's Creations gives you the opportunity to donate or purchase crafts and other creations.<br> 
             The proceeds for any item purchased will be donated to charity.</p>
             <a class="proceed_link" href="./">Browse Items</a>
-            <p>or</p>
+            <p class="center_p">or</p>
             <a class="proceed_link" href="account.php">Sign Up</a>   
         </div>
     </main>
