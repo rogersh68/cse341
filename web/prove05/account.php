@@ -4,8 +4,7 @@ session_start();
 
 // check if attempted login
 if(isset($_POST['email'])) {
-    echo "Logging in";
-        
+    
     // connect to the database
     include 'common/connection.php'; 
     
@@ -54,15 +53,19 @@ if(!$_SESSION['loggedin']) {
         <h1>My Account</h1>
         <?php 
         // try to get creatorid with matching userid, if it can't find it user is not a creator
+        echo "Logged in --> ".$_SESSION['loggedin'];
         try {
             $stmt = $db->prepare('SELECT creatorid FROM creator WHERE userid=:userid');
             $stmt->bindValue(':email', $userInfo['userid'], PDO::PARAM_INT);
             $stmt->execute();
             $creatorId = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $creator = true;
+            print_r($creatorId);
+            echo "Creator (try) --> ".$creator;
         }
         catch(Exception $e) {
             $creator = false;
+            echo "Creator (catch) --> ".$creator;
         }
 
         //if userid is also on creator table display creator info
