@@ -33,7 +33,7 @@ include 'common/connection.php';
             echo "<p>".$row['invdesc']."</p>";
             echo "<p>Created by: ".$row['firstname']." ".$row['lastname']."</p>";
             if (isset($row['userid'])) {
-                echo "<p>SOLD</p>";
+                echo "<p class='red_notice'>SOLD</p>";
             }
             else {
                 echo "<form action='purchase.php' method='post'>";

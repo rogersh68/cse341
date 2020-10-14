@@ -82,10 +82,34 @@ main h1 {
 }
 
 main div img {
-    max-width: 300px;
+    max-width: 200px;
     grid-row: 1 / 3;
 }
 
+.red_notice {
+    font-size: 24px;
+    color: #F15025;
+}
+
+.yellow_notice {
+    font-size: 24px;
+    color: #FFD23F;
+}
+
+.green_notice {
+    font-size: 24px;
+    color: #44CF6C;
+}
+
+.general_notice {
+    font-weight: bold;
+    color: #F15025;
+}
+
+.purchase_btn {
+    background-color: #44CF6C;
+    padding: 10px;
+}
 .purchase_link {
     display: block;
     text-decoration: none;
@@ -100,4 +124,6 @@ main div img {
 
 footer {
     background-color: #7F636E;
+    padding: 20px;
+    margin-right: 150px;
 }
