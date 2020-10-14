@@ -168,6 +168,10 @@ footer {
     padding-top: 30px;
 }
 
+.about_div a:first-of-type {
+    margin-top: 30px;
+}
+
 .center_p {
     margin-left: 70px;
 }
