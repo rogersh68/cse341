@@ -58,7 +58,7 @@ if(!$_SESSION['loggedin']) {
         print_r($userInfo);
         try {
             $stmt = $db->prepare('SELECT creatorid FROM creator WHERE userid=:userid');
-            $stmt->bindValue(':email', $userInfo['userid'], PDO::PARAM_INT);
+            $stmt->bindValue(':email', $userInfo[0]['userid'], PDO::PARAM_INT);
             $stmt->execute();
             $creatorId = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $creator = true;
