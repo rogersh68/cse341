@@ -36,7 +36,7 @@ include 'common/connection.php';
                 <textarea name="commDesc"></textarea>
 
                 <p>Please note that whoever you choose must accept the commission.</p>
-                <input type="submit" value="Send Request">
+                <input class="proceed_btn" type="submit" value="Send Request">
             </form>
 
             <div class="comm_creators_container">

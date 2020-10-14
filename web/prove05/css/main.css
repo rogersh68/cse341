@@ -124,6 +124,7 @@ main div img {
 
 .proceed_btn {
     background-color: #44CF6C;
+    width: 140px;
     border-radius: 5px;
     padding: 10px;
     font-weight: bold;
@@ -215,4 +216,8 @@ footer {
     grid-template-columns: 100px 1fr;
     border-bottom: 3px solid #725A64;
     padding: 25px;
+}
+
+.comm_creators_container {
+    margin-left: 20px;
 }
