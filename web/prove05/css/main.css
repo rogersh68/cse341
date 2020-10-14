@@ -157,8 +157,8 @@ footer {
     padding-bottom: 50px;
 }
 
-.confirmation_div p:last-of-type {
-    margin-bottom: 15px;
+.confirmation_div:last-child {
+    margin-top: 15px;
 }
 
 .proceed_link {
