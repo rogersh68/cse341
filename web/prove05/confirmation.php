@@ -34,13 +34,13 @@ include 'common/connection.php';
             /*** TODO: add userid to row in database ***/ 
 
             // display item summary
-            echo "<h2>Summary</h2>";
-            echo "<p>Your <b>".$itemInfo[0]['invname']."</b> will be shipped to:</p>";
+            echo "<h2 class='subtitle'>Summary</h2>";
+            echo "<div class='confirmation_div'><p>Your <b>".$itemInfo[0]['invname']."</b> will be shipped to:</p>";
             echo "<p><b>".$_POST['address']."</b></p>";
-            echo "<p>Thank you for your purchase.</p>";
+            echo "<p>Thank you for your purchase.</p></div>";
         }
         catch (Exception $e) {
-            echo "Something went wrong. Please try again.";
+            echo "<div class='confirmation_div'>Something went wrong. Please try again.</div>";
         }
         ?>  
         <a title="browse" href="./">Continue Browsing</a>
