@@ -25,7 +25,6 @@ if(isset($_POST['email'])) {
     else {
         // log the user in
         $_SESSION['loggedin'] = TRUE;
-        $_SESSION['userid'] = $userInfo[0]['userid'];
     }
     
 }
