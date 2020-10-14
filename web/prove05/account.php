@@ -90,6 +90,11 @@ if(!$_SESSION['loggedin']) {
                 if ($row['accepted']) {
                     echo "<p class='comm_accepted-p'>Commission Accepted</p>";
                 }
+                else {
+                    echo "<form>";
+                    echo "<input type='submit' value='Accept'>";
+                    echo "</form>";
+                }
                 echo "</div>";
             }
         }

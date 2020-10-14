@@ -23,7 +23,6 @@ header {
 }
 
 header nav {
-    
     height: 100%;
     background-color: white;
 }
@@ -41,7 +40,8 @@ header nav a {
 }
 
 header nav a:hover {
-    background-color: lighten(#7F636E, 50%);
+    background-color: #AE98A1;
+    font-weight: bold;
 }
 
 nav li {
@@ -51,7 +51,7 @@ nav li {
 .logo {
     width: 200px;
 }
-.logo_div h1 {
+.logo_header_div h1 {
     font-size: 75px;
 }
 
