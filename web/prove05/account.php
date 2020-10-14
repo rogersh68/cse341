@@ -54,6 +54,8 @@ if(!$_SESSION['loggedin']) {
         <?php 
         // try to get creatorid with matching userid, if it can't find it user is not a creator
         echo "Logged in --> ".$_SESSION['loggedin'];
+        echo "User info -->";
+        print_r($userInfo);
         try {
             $stmt = $db->prepare('SELECT creatorid FROM creator WHERE userid=:userid');
             $stmt->bindValue(':email', $userInfo['userid'], PDO::PARAM_INT);
@@ -65,6 +67,7 @@ if(!$_SESSION['loggedin']) {
         }
         catch(Exception $e) {
             $creator = false;
+            echo $e;
             echo "Creator (catch) --> ".$creator;
         }
 
