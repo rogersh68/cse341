@@ -53,29 +53,40 @@ if(!$_SESSION['loggedin']) {
         <h1>My Account</h1>
         <?php 
         // try to get creatorid with matching userid, if it can't find it user is not a creator
-        echo "Logged in --> ".$_SESSION['loggedin'];
-        echo "User info -->";
-        print_r($userInfo);
         try {
             $stmt = $db->prepare('SELECT creatorid FROM creator WHERE userid=:userid');
             $stmt->bindValue(':userid', $userInfo[0]['userid'], PDO::PARAM_INT);
             $stmt->execute();
             $creatorId = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $creator = true;
-            print_r($creatorId);
-            echo "Creator (try) --> ".$creator;
         }
         catch(Exception $e) {
             $creator = false;
-            echo $e;
-            echo "Creator (catch) --> ".$creator;
         }
 
         //if userid is also on creator table display creator info
         if($creator) {
             echo "You are a creator";
             //display list of creations
+            $stmt = $db->prepare('SELECT inventoryname, inventoryimg, userid FROM inventory WHERE creatorid=:creatorid');
+            $stmt->bindValue(':creatorid', $creatorId[0]['creatorid'], PDO::PARAM_INT);
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            foreach ($rows as $row) {
+                echo "<div class='account-row'>";
+                echo "<img src='".$row['inventoryimg']."' alt='".$row['inventoryname']."'>";
+                echo "<h2>".$row['inventoryname']."</h2>";
+                echo "<p>";
+                if (isset($row['userid'])){
+                    echo "Sold</p>";
+                }
+                else {
+                    echo "Available</p>";
+                }
+                echo "</div>";
+            }
+            
             //display list of commissions
 
             //display link for editing creations
