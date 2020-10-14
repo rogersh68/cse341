@@ -22,6 +22,7 @@ include 'common/connection.php';
 
     <main>
         <h1>Welcome</h1>
+        <h2 class="subtitle">Browse our selection of crafts and creations</h2>
 
         <?php
         // display each inventory item
@@ -31,7 +32,7 @@ include 'common/connection.php';
             echo "<img src='".$row['invimg']."' alt='".$row['invname']."'>";
             echo "<div><h2>".$row['invname']."</h2>";
             echo "<p>".$row['invdesc']."</p>";
-            echo "<p>Created by: ".$row['firstname']." ".$row['lastname']."</p>";
+            echo "<p><b>Created by: ".$row['firstname']." ".$row['lastname']."</b></p>";
             if (isset($row['userid'])) {
                 echo "<p class='red_notice'>SOLD</p>";
             }

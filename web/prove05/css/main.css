@@ -75,6 +75,11 @@ main h1 {
     border-bottom: 3px dashed #725A64;
 }
 
+.subtitle {
+    padding: 20px;
+    font-style: italic;
+}
+
 .item_overview {
     display: grid;
     grid-template-columns: 300px 1fr;
