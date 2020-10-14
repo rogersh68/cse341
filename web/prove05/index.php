@@ -1,4 +1,7 @@
 <?php 
+//start session
+session_start();
+
 // connect to the database
 include 'common/connection.php'; 
 ?>

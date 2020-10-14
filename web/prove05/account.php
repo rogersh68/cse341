@@ -1,3 +1,38 @@
+<?php 
+// start session
+session_start();
+
+// connect to the database
+include 'common/connection.php'; 
+
+// check if attempted login
+if(isset($_POST['email'])) {
+    $email = $_POST['email'];
+    $password = $_POSt['password'];
+
+    //***TODO: insert try catch for when email doesn't exist in database - catch sends to create-account.php
+    $stmt = $db->prepare('SELECT userid, user.password FROM public.user WHERE email=:email');
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+    $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //send user back to login if passwords don't match
+    if($password != $userInfo[0]['password']) {
+        $_SESSION['login_message'] = "Incorrect password";
+        header('Location: login.php');
+    }
+    else {
+        // log the user in
+        $_SESSION['logggedin'] = true;
+    }
+}
+
+// redirect to login page if user is not logged in
+if(!$_SESSION['loggedin']) {
+    header('Location: login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +42,51 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'common/header.php'; ?>
+    <?php 
+    // display the header
+    include 'common/header.php';
+    ?>
 
     <main>
         <h1>My Account</h1>
+        <?php 
+        // try to get creatorid with matching userid, if it can't find it user is not a creator
+        try {
+            $stmt = $db->prepare('SELECT creatorid FROM creator WHERE userid=:userid');
+            $stmt->bindValue(':email', $userInfo['userid'], PDO::PARAM_INT);
+            $stmt->execute();
+            $creatorId = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $creator = true;
+        }
+        catch(Exception $e) {
+            $creator = false;
+        }
+
+        //if userid is also on creator table display creator info
+        if($creator) {
+            echo "You are a creator";
+            //display list of creations
+
+            //display list of commissions
+
+            //display link for editing creations
+        }
+        //display user info if they are not a creator
+        else {
+            echo "You are NOT a creator";
+            //display list of purchases
+
+            //display list of commissions
+
+        }
+
+        
+        ?>
     </main>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'].'common/footer.php'; ?>
+    <?php 
+    // display the footer
+    include 'common/footer.php'; 
+    ?>
 </body>
 </html>
