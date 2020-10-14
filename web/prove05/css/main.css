@@ -1,5 +1,5 @@
 html {
-    overflow: hidden;
+    margin: auto;
 }
 
 body {
@@ -62,7 +62,7 @@ nav li {
 main {
     margin-left: 150px;
     padding: 20px;
-    margin-top: 220px;
+    margin-top: 200px;
 }
 
 main h1 {
