@@ -55,11 +55,11 @@ nav li {
 
 .logo {
     width: 200px;
-    color: #DBD2D6;
+    color: #EDE8EA;
 }
 .logo_header_div h1 {
     font-size: 75px;
-    color: #DBD2D6;
+    color: #EDE8EA;
 }
 
 main {
@@ -130,7 +130,18 @@ main div img {
 
 footer {
     background-color: #7F636E;
-    padding: 20px;
+    color: #EDE8EA;
+    padding: 15px;
     margin-left: 150px;
     text-align: center;
+}
+
+.confirmation_form {
+    padding: 30px;
+    margin: auto;
+
+}
+
+.confirmation_form label, .confirmation_form input {
+    display: block;
 }
