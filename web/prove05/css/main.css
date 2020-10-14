@@ -68,9 +68,9 @@ main {
 
 main h1 {
     text-align: center;
-    padding: 30px;
-    padding-bottom: 10px;
-    margin-bottom: 0px
+    max-width: 600px;
+    padding: 50px, auto, 10px, auto;
+    margin-bottom: 0px;
     font-size: 50px;
     font-family: cursive;
     color: #725A64;
@@ -81,8 +81,9 @@ main h1 {
     padding: 20px;
     padding-top: 0;
     margin-top: 10px;
-    font-style: italic;
+    
     text-align: center;
+    color: #725A64;
 }
 
 .item_overview {
