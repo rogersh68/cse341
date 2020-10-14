@@ -55,11 +55,11 @@ nav li {
 
 .logo {
     width: 200px;
-    color: #EDE8EA;
+    color: #F5F5F5;
 }
 .logo_header_div h1 {
     font-size: 75px;
-    color: #EDE8EA;
+    color: #F5F5F5;
 }
 
 main {
@@ -130,7 +130,7 @@ main div img {
 
 footer {
     background-color: #7F636E;
-    color: #EDE8EA;
+    color: #F5F5F5;
     padding: 15px;
     margin-left: 150px;
     text-align: center;
@@ -158,13 +158,13 @@ footer {
 }
 
 .confirmation_div p:last-of-type {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .proceed_link {
     display: block;
     background-color: #5B4850;
-    color: #EDE8EA;
+    color: #F5F5F5;
     text-align: center;
     width: 140px;
     padding: 10px;
@@ -175,4 +175,5 @@ footer {
 
 .proceed_link:hover {
     background-color: #45363C;
+    color: #DBD2D6;
 }
