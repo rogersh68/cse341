@@ -53,18 +53,6 @@ if(!$_SESSION['loggedin']) {
     <main>
         <h1>My Account</h1>
         <?php 
-        // try to get creatorid with matching userid, if it can't find it user is not a creator
-        /*try {
-            $stmt = $db->prepare('SELECT creatorid FROM creator WHERE userid=:userid');
-            $stmt->bindValue(':userid', $userInfo[0]['userid'], PDO::PARAM_INT);
-            $stmt->execute();
-            $creatorId = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $creator = true;
-        }
-        catch(Exception $e) {
-            $creator = false;
-        }*/
-
         //if user is a creator display creator information
         if($userInfo[0]['creator']) {
             //display list of creations
@@ -105,9 +93,6 @@ if(!$_SESSION['loggedin']) {
                 }
                 echo "</div>";
             }
-
-            //display link for editing creations
-            echo "<a title='edit creations' href='edit.php'>Edit Your Creations</a>";
         }
         
         //display user info if they are not a creator
