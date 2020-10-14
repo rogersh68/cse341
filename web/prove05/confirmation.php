@@ -37,13 +37,13 @@ include 'common/connection.php';
             echo "<h2 class='subtitle'>Summary</h2>";
             echo "<div class='confirmation_div'><p>Your <b>".$itemInfo[0]['invname']."</b> will be shipped to:</p>";
             echo "<p><b>".$_POST['address']."</b></p>";
-            echo "<p>Thank you for your purchase.</p></div>";
+            echo "<p>Thank you for your purchase.</p>";
         }
         catch (Exception $e) {
-            echo "<div class='confirmation_div'>Something went wrong. Please try again.</div>";
+            echo "<div class='confirmation_div'>Something went wrong. Please try again.";
         }
         ?>  
-        <a title="browse" href="./">Continue Browsing</a>
+        <a title="browse" href="./">Continue Browsing</a></div>
     </main>
 
     <?php 

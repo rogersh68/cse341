@@ -153,5 +153,14 @@ footer {
 }
 
 .confirmation_div {
-    padding: 30px;
+    padding: 0, 0, 30px, 30px;
+}
+
+.proceed_link {
+    display: block;
+    background-color: purple;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
 }
