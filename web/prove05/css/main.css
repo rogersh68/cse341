@@ -233,3 +233,7 @@ footer {
 .comm_creators_container {
     margin-left: 40px;
 }
+
+.comm_creators_container .subtitle {
+    text-align: left;
+}

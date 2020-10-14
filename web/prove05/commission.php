@@ -40,7 +40,7 @@ include 'common/connection.php';
             </form>
 
             <div class="comm_creators_container">
-                <h2>Get to know our creators</h2>
+                <h2 class="subtitle">Get to know our creators</h2>
 
                 <div class="creators_div">
                     <?php
