@@ -1,4 +1,7 @@
 <?php 
+//start session
+session_start();
+
 // connect to the database
 include 'common/connection.php'; 
 ?>
@@ -19,25 +22,25 @@ include 'common/connection.php';
 
     <main>
         <h1>Purchase</h1>  
+
         <?php
-  
         //get and display item being purchased
         try {
             
             // get id from form
-            $inventoryId = $_POST['item'];
+            $invId = $_POST['item'];
             
             // query database for the item
-            $stmt = $db->prepare('SELECT * FROM inventory WHERE inventoryid=:id');
-            $stmt->bindValue(':id', $inventoryId, PDO::PARAM_INT);
+            $stmt = $db->prepare('SELECT * FROM inventory WHERE invid=:invid');
+            $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             //display the item
             echo "<div class='item_overview'>";
-            echo "<img src='".$itemInfo[0]['inventoryimg']."' alt='".$itemInfo[0]['inventoryname']."'>";
-            echo "<div><h2>".$itemInfo[0]['inventoryname']."</h2>";
-            echo "<p>".$itemInfo[0]['inventorydesc']."</p></div></div>";
+            echo "<img src='".$itemInfo[0]['invimg']."' alt='".$itemInfo[0]['invname']."'>";
+            echo "<div><h2>".$itemInfo[0]['invname']."</h2>";
+            echo "<p>".$itemInfo[0]['invdesc']."</p></div></div>";
 
             // check if item is under a userid already
             if (isset($itemInfo[0]['userid'])) {
@@ -50,7 +53,7 @@ include 'common/connection.php';
                 echo "<label>Address</label>";
                 echo "<input type='text' name='address'>";
                 echo "<input type='submit' value='Complete Purchase'>";
-                echo "<input type='hidden' name='item' value='".$inventoryId."'></form>";
+                echo "<input type='hidden' name='item' value='".$invId."'></form>";
             }
             
         }
