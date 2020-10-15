@@ -21,7 +21,7 @@ include 'common/connection.php';
 
     <main>
         <h1>Edit Creation</h1>  
-        <div class="edit_item">
+        <div class="edit_item_div">
             <?php
             // list info for item being edited
             $stmt = $db->prepare('SELECT * FROM inventory WHERE invid = :invid');
@@ -29,9 +29,9 @@ include 'common/connection.php';
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<img src='".$itemInfo['invimg']."' alt='".$itemInfo['invname']."'>";
-            echo "<h2>".$itemInfo['invname']."</h2>";
-            echo "<p>".$itemInfo['invdesc']."</p>";
+            echo "<img src='".$itemInfo[0]['invimg']."' alt='".$itemInfo[0]['invname']."'>";
+            echo "<h2>".$itemInfo[0]['invname']."</h2>";
+            echo "<p>".$itemInfo[0]['invdesc']."</p>";
             ?> 
         </div>
         
