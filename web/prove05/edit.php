@@ -29,8 +29,11 @@ include 'common/connection.php';
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            echo "<h2>Image:</h2>";
             echo "<img src='".$itemInfo[0]['invimg']."' alt='".$itemInfo[0]['invname']."'>";
-            echo "<h2>".$itemInfo[0]['invname']."</h2>";
+            echo "<h2>Name:</h2>";
+            echo "<h3>".$itemInfo[0]['invname']."</h3>";
+            echo "<h2>Description:</h2>";
             echo "<p>".$itemInfo[0]['invdesc']."</p>";
             ?> 
         </div>
