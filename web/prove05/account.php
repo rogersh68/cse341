@@ -72,7 +72,7 @@ if(!$_SESSION['loggedin']) {
                 else {
                     echo "<form action='edit.php' method='post'>";
                     echo "<input type='hidden' name='invid' value='".$row['invid']."'>";
-                    echo "<input type='submit' value='Edit'></form>";
+                    echo "<input class='proceed_btn' type='submit' value='Edit'></form>";
                 }
                 echo "</div>";
             }
@@ -89,11 +89,11 @@ if(!$_SESSION['loggedin']) {
                 echo "<p>".$row['commdesc']."</p>";
                 echo "<p>Requested by: ".$row['firstname']." ".$row['lastname']." <a href='mailto:'>".$row['useremail']."</a></p>";
                 if ($row['accepted']) {
-                    echo "<p class='comm_accepted-p'>Commission Accepted</p>";
+                    echo "<p class='yellow_notice'>Accepted</p>";
                 }
                 else {
                     echo "<form>";
-                    echo "<input type='submit' value='Accept'>";
+                    echo "<input class='proceed_btn' type='submit' value='Accept'>";
                     echo "</form>";
                 }
                 echo "</div>";
