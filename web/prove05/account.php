@@ -60,11 +60,12 @@ if(!$_SESSION['loggedin']) {
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<h2>Your Creations</h2>";
+            echo "<h2 class='subtitle'>Your Creations</h2>";
             foreach ($rows as $row) {
                 echo "<div class='account_items_row'>";
                 echo "<img src='".$row['invimg']."' alt='".$row['invname']."'>";
-                echo "<h3>".$row['invname']."</h3>";
+                echo "<div><h3>".$row['invname']."</h3>";
+                echo "<p>".$row['invdesc']."</p></div>";
                 if (isset($row['userid'])){
                     echo "<p class='green_notice'>Sold</p>";
                 }
@@ -82,7 +83,7 @@ if(!$_SESSION['loggedin']) {
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<h2>Your Commissions</h2>";
+            echo "<h2 class='subtitle'>Your Commissions</h2>";
             foreach ($rows as $row){
                 echo "<div class='account_comm_row'>";
                 echo "<p>".$row['commdesc']."</p>";
