@@ -308,10 +308,18 @@ footer {
 }
 
 .account_items_row {
+    background-color: red;
+    padding-left: 40px;
     display: grid;
     grid-template-columns: 150px 1fr 150px;
 }
 
 .account_items_row img {
     max-width: 100px;
+}
+
+.account_comm_row {
+    padding-left: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 100px;
 }
