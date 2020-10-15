@@ -37,6 +37,7 @@ include 'common/connection.php';
 
                 <input class="proceed_btn" type="submit" value="Login">
             </form> 
+            <p class="center_p">or</p>
             <a class="proceed_link" title="create account" href="create-account.php">Create Account</a>
         </div>
     </main>

@@ -123,6 +123,7 @@ main div img {
 }
 
 .proceed_btn {
+    display: block;
     background-color: #44CF6C;
     width: 140px;
     border-radius: 5px;
