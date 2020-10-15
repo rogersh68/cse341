@@ -249,3 +249,18 @@ footer {
     text-align: left;
     margin-bottom: 0;
 }
+
+.login_div {
+    padding-left: 40px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.login_div form label{
+    display: block;
+}
+
+.login_div form input {
+    padding: 10px;
+    margin-bottom: 15px;
+}

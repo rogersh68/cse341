@@ -21,22 +21,24 @@ include 'common/connection.php';
 
     <main>
         <h1>Login</h1> 
-        <form action="account.php" method="post">
-            <label for="email">Email</label>
-            <input type="email" required name="email">
-            
-            <label for="password">Password</label>
-            <input type="password" required name="password">
+        <div class="login_div">
+            <form action="account.php" method="post">
+                <label for="email">Email</label>
+                <input type="email" required name="email">
+                
+                <label for="password">Password</label>
+                <input type="password" required name="password">
 
-            <?php
-            if(isset($_SESSION['login_message'])){
-                echo "<p class='notice'>".$_SESSION['login_message']."</p>";
-            }
-            ?>
+                <?php
+                if(isset($_SESSION['login_message'])){
+                    echo "<p class='general_notice'>".$_SESSION['login_message']."</p>";
+                }
+                ?>
 
-            <input type="submit" value="Login">
-        </form> 
-        <a title="create account" href="create-account.php">Create Account</a>
+                <input class="proceed_btn" type="submit" value="Login">
+            </form> 
+            <a class="proceed_link" title="create account" href="create-account.php">Create Account</a>
+        </div>
     </main>
 
     <?php 
