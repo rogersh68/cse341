@@ -306,3 +306,11 @@ footer {
     padding: 10px;
     font-weight: bold;
 }
+
+.account_items_row {
+    display: flex;
+}
+
+.account_items_row img {
+    max-width: 100px;
+}

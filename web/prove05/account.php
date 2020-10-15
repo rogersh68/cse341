@@ -64,13 +64,13 @@ if(!$_SESSION['loggedin']) {
             foreach ($rows as $row) {
                 echo "<div class='account_items_row'>";
                 echo "<img src='".$row['invimg']."' alt='".$row['invname']."'>";
-                echo "<h2>".$row['invname']."</h2>";
+                echo "<h3>".$row['invname']."</h3>";
                 if (isset($row['userid'])){
-                    echo "<p>Sold</p>";
+                    echo "<p class='green_notice'>Sold</p>";
                 }
                 else {
                     echo "<form action='edit.php' method='post'>";
-                    echo "<input type='hidden' name='invid' value='".$row['invid']."'>";
+                    echo "<input class='proceed_btn' type='hidden' name='invid' value='".$row['invid']."'>";
                     echo "<input type='submit' value='Edit'></form>";
                 }
                 echo "</div>";
