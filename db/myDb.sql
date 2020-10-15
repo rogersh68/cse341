@@ -26,6 +26,7 @@ CREATE TABLE public.inventory
 	inventoryId SERIAL NOT NULL PRIMARY KEY,
 	inventoryName VARCHAR(100) NOT NULL,
 	inventoryDesc VARCHAR(300) NOT NULL,
+	inventoryImg VARCHAR(300) NOT NULL,
 	creatorId INT NOT NULL REFERENCES public.creator(creatorId),
-	userId INT NOT NULL REFERENCES public.user(userId)
+	userId INT REFERENCES public.user(userId)
 );
