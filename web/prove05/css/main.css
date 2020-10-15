@@ -288,11 +288,11 @@ footer {
     display: inline;
 }
 
-.sbs {
+.sbs label {
     display: inline;
 }
 
-.create_account_form_textarea {
+.create_account_form textarea {
     width: 250px;
     height: 100px;
 }

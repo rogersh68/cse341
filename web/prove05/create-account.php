@@ -35,6 +35,7 @@ include 'common/connection.php';
             <label for="creator">Are you signing up as a Creator?</label>
             <input type="radio" id="yes" name="creator" value="true">
             <label class="sbs" for="yes">Yes</label>
+            <br>
             <input type="radio" id="no" name="creator" value="false">
             <label class ="sbs" for="no">No</label>
 
@@ -42,7 +43,7 @@ include 'common/connection.php';
             <textarea class="new_creator_desc" name="desc"></textarea>
 
             <label for="img">Profile Picture</label>
-            <input type="image" name="img">
+            <input type="text" name="img">
 
             <input class="proceed_btn" type="submit" value="Create Account">
         </form>   
