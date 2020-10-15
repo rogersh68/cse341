@@ -103,16 +103,17 @@ if(!$_SESSION['loggedin']) {
         //display user info if they are not a creator
         else {
             //display list of purchases
-            $stmt = $db->prepare('SELECT invname, invimg FROM inventory WHERE userid=:userid');
+            $stmt = $db->prepare('SELECT invname, invimg, invdesc FROM inventory WHERE userid=:userid');
             $stmt->bindValue(':userid', $userInfo[0]['userid'], PDO::PARAM_INT);
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<h2>Your Purchases</h2>";
+            echo "<h2 class='subtitle'>Your Purchases</h2>";
             foreach($rows as $row){
                 echo "<div class='account_items_row'</div>";
                 echo "<img src='".$row['invimg']."' alt='".$row['invname']."'>";
-                echo "<h2>".$row['invname']."</h2>";
+                echo "<div><h3>".$row['invname']."</h3>";
+                echo "<p>".$row['invdesc']."</p></div>";
                 echo "<p></p></div>";
             }
             
@@ -125,16 +126,16 @@ if(!$_SESSION['loggedin']) {
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<h2>Your Requested Commissions</h2>";
+            echo "<hr><h2 class='subtitle'>Your Requested Commissions</h2>";
             foreach($rows as $row) {
                 echo "<div class='account_comm_row'>";
                 echo "<p>".$row['commdesc']."</p>";
                 echo "<p>Request sent to: ".$row['firstname']." ".$row['lastname']."</p>";
                 if ($row['accepted']) {
-                    echo "<p class='comm_accepted-p'>Commission Accepted</p>";
+                    echo "<p class='green_notice'>Accepted</p>";
                 }
                 else {
-                    echo "<p>Pending</p>";
+                    echo "<p class='yellow_notice'>Pending</p>";
                 }
                 echo "</div>";
             }
