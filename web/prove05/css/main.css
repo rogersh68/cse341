@@ -122,15 +122,6 @@ main div img {
     color: #F15025;
 }
 
-.proceed_btn {
-    display: block;
-    background-color: #44CF6C;
-    width: 160px;
-    border-radius: 5px;
-    padding: 10px;
-    font-weight: bold;
-}
-
 footer {
     background-color: #7F636E;
     color: #F5F5F5;
@@ -270,7 +261,7 @@ footer {
 .create_account_form {
     padding-left: 40px;
     padding-bottom: 50px;
-    padding-top: 30px;
+    padding-top: 50px;
 }
 
 .create_account_form label {
@@ -295,6 +286,8 @@ footer {
 .create_account_form textarea {
     width: 250px;
     height: 100px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .new_creator_desc {
@@ -303,4 +296,13 @@ footer {
 
 .hide {
     display: none;
+}
+
+.proceed_btn {
+    display: block;
+    background-color: #44CF6C;
+    width: 160px;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
 }
