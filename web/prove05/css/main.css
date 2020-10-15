@@ -109,6 +109,7 @@ main div img {
 
 .yellow_notice {
     font-size: 24px;
+    font-weight: bolder;
     color: #FFD23F;
 }
 
@@ -314,6 +315,11 @@ footer {
     grid-template-columns: 150px 1fr 150px;
     grid-gap: 15px;
     max-width: 600px;
+    border-bottom: 3px solid #5B4850;
+}
+
+.account_items_row:last-child {
+    border-bottom: none;
 }
 
 .account_items_row img {
@@ -329,6 +335,6 @@ footer {
 }
 
 hr {
-    color: #5B4850;
-    padding: 20px;
+    background-color: #5B4850;
+    margin: 20px;
 }
