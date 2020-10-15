@@ -142,7 +142,6 @@ footer {
 .confirmation_form {
     padding: 30px;
     margin: auto;
-
 }
 
 .confirmation_form label {
@@ -153,6 +152,7 @@ footer {
     display: block;
     padding: 10px;
     margin-bottom: 15px;
+    width: 250px;
 }
 
 .confirmation_div {
@@ -264,4 +264,38 @@ footer {
 .login_div form input {
     padding: 10px;
     margin-bottom: 15px;
+    width: 250px;
+}
+
+.create_account_form {
+    padding-left: 40px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.create_account_form label {
+    display: block;
+}
+
+.create_account_form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 250px;
+}
+
+.sbs {
+    display: inline;
+}
+
+.create_account_form_textarea {
+    width: 250px;
+    height: 100px;
+}
+
+.new_creator_desc {
+    display: block;
+}
+
+.hide {
+    display: none;
 }

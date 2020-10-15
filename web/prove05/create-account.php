@@ -19,7 +19,7 @@ include 'common/connection.php';
 
     <main>
         <h1>Create Account</h1>
-        <form action="login.php" method="post">
+        <form class="create_account_form" action="login.php" method="post">
             <label for="firstname">First Name</label>
             <input type="text" name="firstname">
 
@@ -34,9 +34,9 @@ include 'common/connection.php';
 
             <label for="creator">Are you signing up as a Creator?</label>
             <input type="radio" id="yes" name="creator" value="true">
-            <label for="yes">Yes</label>
+            <label class="sbs" for="yes">Yes</label>
             <input type="radio" id="no" name="creator" value="false">
-            <label for="no">No</label>
+            <label class ="sbs" for="no">No</label>
 
             <label class="new_creator_desc" for="desc">Tell us about yourself and what you create</label>
             <textarea class="new_creator_desc" name="desc"></textarea>
@@ -44,7 +44,7 @@ include 'common/connection.php';
             <label for="img">Profile Picture</label>
             <input type="image" name="img">
 
-            <input type="submit" value="Create Account">
+            <input class="proceed_btn" type="submit" value="Create Account">
         </form>   
     </main>
 
