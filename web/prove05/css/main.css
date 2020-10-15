@@ -283,6 +283,11 @@ footer {
     width: 250px;
 }
 
+.create_account_form input[type="radio"] {
+    width: auto;
+    display: inline;
+}
+
 .sbs {
     display: inline;
 }
