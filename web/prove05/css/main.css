@@ -114,6 +114,7 @@ main div img {
 
 .green_notice {
     font-size: 24px;
+    font-weight: bolder;
     color: #44CF6C;
 }
 
@@ -311,7 +312,8 @@ footer {
     padding-left: 40px;
     display: grid;
     grid-template-columns: 150px 1fr 150px;
-    max-width: 500px;
+    grid-gap: 15px;
+    max-width: 600px;
 }
 
 .account_items_row img {

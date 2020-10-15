@@ -71,7 +71,7 @@ if(!$_SESSION['loggedin']) {
                 }
                 else {
                     echo "<form action='edit.php' method='post'>";
-                    echo "<input class='proceed_btn' type='hidden' name='invid' value='".$row['invid']."'>";
+                    echo "<input type='hidden' name='invid' value='".$row['invid']."'>";
                     echo "<input type='submit' value='Edit'></form>";
                 }
                 echo "</div>";
@@ -83,7 +83,7 @@ if(!$_SESSION['loggedin']) {
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<h2 class='subtitle'>Your Commissions</h2>";
+            echo "<hr><h2 class='subtitle'>Your Commissions</h2>";
             foreach ($rows as $row){
                 echo "<div class='account_comm_row'>";
                 echo "<p>".$row['commdesc']."</p>";
