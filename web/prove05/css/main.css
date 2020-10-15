@@ -333,3 +333,9 @@ hr {
     background-color: #5B4850;
     margin: 20px;
 }
+
+.edit_item_div {
+    padding-left: 40px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
