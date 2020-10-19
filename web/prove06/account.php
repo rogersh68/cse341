@@ -29,7 +29,16 @@ include 'common/connection.php';
     <main>
         <h1>My Account</h1>
         <?php 
-        print_r($_POST);
+        //insert any new commissions into database
+        if(isset($_POST)) {
+            $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) 
+                                    VALUES (:commdesc, :accepted, :creatorid, :userid)');
+            $stmt->bindValue(':commdesc', $_POST['commDesc'], PDO::PARAM_STR);
+            $stmt->bindValue(':accepted', false);
+            $stmt->bindValue(':creatorid', $_POST['creator'], PDO::PARAM_INT);
+            $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
+            $stmt->execute();
+        }
 
         // get user's info
         $stmt = $db->prepare('SELECT * FROM public.user WHERE userid=:userid');
