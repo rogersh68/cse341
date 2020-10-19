@@ -5,7 +5,7 @@ session_start();
 // redirect to login page if user is not logged in
 if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
     $_SESSION['page'] = "account";
-    header('Location: login.php?page=account');
+    header('Location: login.php');
 }
 ?>
 
@@ -19,6 +19,8 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
 </head>
 <body>
     <?php 
+    print_r($_SESSION);
+
     // display the header
     include 'common/header.php';
     ?>
@@ -31,6 +33,7 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
         $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
         $stmt->execute();
         $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        print_r($userInfo);
 
         //if user is a creator display creator information
         if($userInfo[0]['creator']) {

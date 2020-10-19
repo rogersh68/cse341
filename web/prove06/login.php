@@ -21,15 +21,7 @@ include 'common/connection.php';
 
     <main>
         <h1>Login</h1> 
-        <?php 
-            echo "PRE-FORM --->\n";
-            echo "SESSION: \n";
-            print_r($_SESSION);
-            echo "POST: \n";
-            print_r($_POST);
-            echo "GET: \n";
-            print_r($_GET);
-        ?>
+
         <div class="login_div">
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
                 <label for="email">Email</label>
@@ -53,10 +45,6 @@ include 'common/connection.php';
                 // set destination variables
                 $retry = "Location: login.php";
                 $redirect = "Location: ".$_SESSION['page'].".php";
-
-                echo $retry."\n";
-                echo $redirect."\n";
-
 
                 // set login credential variables
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -91,15 +79,6 @@ include 'common/connection.php';
                 $_SESSION['login_message'] = "Email is required.";
                 header($retry);
             }
-
-            echo "POST-FORM --->\n";
-    echo "SESSION: \n";
-    print_r($_SESSION);
-    echo "POST: \n";
-    print_r($_POST);
-    echo "GET: \n";
-    print_r($_GET);
-
             ?>
 
             <p class="center_p">or</p>
