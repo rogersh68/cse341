@@ -51,14 +51,14 @@ include 'common/connection.php';
                 echo "Prepare successful\n";
             }
 
-            if(!$stmt->bindParam(':commdesc', $_POST['commDesc'], PDO::PARAM_STR)){
+            if(!$stmt->bindValue(':commdesc', $_POST['commDesc'], PDO::PARAM_STR)){
                 echo "bind 1 failed";
             }
             else {
                 echo "bind 1 successful\n";
             }
 
-            if(!$stmt->bindParam(':accepted', 'f', PDO::PARAM_BOOL)){
+            if(!$stmt->bindValue(':accepted', FALSE, PDO::PARAM_BOOL)){
                 echo "bind 2 failed";
             }
             else {
