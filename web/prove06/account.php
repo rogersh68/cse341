@@ -43,12 +43,25 @@ include 'common/connection.php';
         //insert any new commissions into database
         if(isset($_POST['creator']) && isset($_POST['commDesc'])) {
             echo "Prepare Statment";
-            $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)');
-            $stmt->bindParam(':commdesc', $_POST['commDesc'], PDO::PARAM_STR);
-            $stmt->bindParam(':accepted', false);
-            $stmt->bindParam(':creatorid', $_POST['creator'], PDO::PARAM_INT);
-            $stmt->bindParam(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
-            $stmt->execute();
+
+            if(!$stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)')) {
+                echo "Prepare failed";
+            }
+            if(!$stmt->bindParam(':commdesc', $_POST['commDesc'], PDO::PARAM_STR)){
+                echo "bind 1 failed";
+            }
+            if(!$stmt->bindParam(':accepted', false)){
+                echo "bind 2 failed";
+            }
+            if(!$stmt->bindParam(':creatorid', $_POST['creator'], PDO::PARAM_INT)){
+                echo "bind 3 failed";
+            }
+            if(!$stmt->bindParam(':userid', $_SESSION['user_info']['userid'])){
+                echo "bind 4 failed";
+            }
+            if(!$stmt->execute()){
+                echo "execute failed";
+            }
         }
 
         //if user is a creator display creator information
