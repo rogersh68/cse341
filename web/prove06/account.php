@@ -41,7 +41,8 @@ include 'common/connection.php';
         print_r($_SESSION);
 
         //insert any new commissions into database
-        if(isset($_POST['creator']) and isset($_POST['commDesc'])) {
+        if(isset($_POST['creator']) && isset($_POST['commDesc'])) {
+            echo "Prepare Statment";
             $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)');
             $stmt->bindParam(':commdesc', $_POST['commDesc'], PDO::PARAM_STR);
             $stmt->bindParam(':accepted', false);
