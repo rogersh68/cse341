@@ -22,7 +22,7 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
     print_r($_SESSION);
 
     // display the header
-    include 'common/header.php';
+    //include 'common/header.php';
     ?>
 
     <main>
