@@ -58,7 +58,7 @@ include 'common/connection.php';
                 echo "bind 1 successful\n";
             }
 
-            if(!$stmt->bindParam(':accepted', false)){
+            if(!$stmt->bindParam(':accepted', FALSE)){
                 echo "bind 2 failed";
             }
             else {
