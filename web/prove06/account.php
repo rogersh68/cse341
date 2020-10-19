@@ -7,6 +7,9 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
     $_SESSION['page'] = "account";
     header('Location: login.php');
 }
+
+// connect to the database
+include 'common/connection.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +22,8 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
 </head>
 <body>
     <?php 
-    print_r($_SESSION);
-    echo "\n".$_SESSION['user_info']['userid'];
     // display the header
-    //include 'common/header.php';
+    include 'common/header.php';
     ?>
 
     <main>
