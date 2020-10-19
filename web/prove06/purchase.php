@@ -33,8 +33,7 @@ include 'common/connection.php';
         <?php
         //get and display item being purchased
         try {
-            
-            // get id from form
+            // get item id from form or session
             if(isset($_SESSION['item'])) {
                 $invId = $_SESSION['item'];
             }
@@ -42,16 +41,11 @@ include 'common/connection.php';
                 $invId = $_POST['item'];
             }
             
-            
             // query database for the item
             $stmt = $db->prepare('SELECT * FROM inventory WHERE invid=:invid');
             $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            echo $invId;
-            print_r($itemInfo);
-            print_r($_SESSION);
             
             //display the item
             echo "<div class='item_overview'>";
@@ -74,6 +68,8 @@ include 'common/connection.php';
                 echo "<input type='hidden' name='item' value='".$invId."'></form>";
             }
             
+            //clear session item variable
+            unset($_SESSION['item']);
         }
         catch (Exception $e){
             echo "Something went wrong. Please try again.";
