@@ -1,4 +1,13 @@
 <?php 
+//start session
+session_start();
+
+// redirect to login page if user is not logged in
+if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
+    $_SESSION['page'] = "commission";
+    header('Location: login.php');
+}
+
 // connect to the database
 include 'common/connection.php'; 
 ?>

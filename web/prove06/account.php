@@ -29,6 +29,8 @@ include 'common/connection.php';
     <main>
         <h1>My Account</h1>
         <?php 
+        print_r($_POST);
+
         // get user's info
         $stmt = $db->prepare('SELECT * FROM public.user WHERE userid=:userid');
         $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
