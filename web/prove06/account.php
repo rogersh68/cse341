@@ -42,33 +42,48 @@ include 'common/connection.php';
 
         //insert any new commissions into database
         if(isset($_POST['creator']) && isset($_POST['commDesc'])) {
-            echo "Prepare Statment";
+            echo "Prepare Statment\n";
 
             if(!$stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)')) {
                 echo "Prepare failed";
             }
             else {
-                echo "Prepare successful";
+                echo "Prepare successful\n";
             }
 
             if(!$stmt->bindParam(':commdesc', $_POST['commDesc'], PDO::PARAM_STR)){
                 echo "bind 1 failed";
             }
             else {
-                echo "bind 1 successful";
+                echo "bind 1 successful\n";
             }
 
             if(!$stmt->bindParam(':accepted', false)){
                 echo "bind 2 failed";
             }
+            else {
+                echo "bind 2 successful\n";
+            }
+
             if(!$stmt->bindParam(':creatorid', $_POST['creator'], PDO::PARAM_INT)){
                 echo "bind 3 failed";
             }
+            else {
+                echo "bind 3 successful\n";
+            }
+
             if(!$stmt->bindParam(':userid', $_SESSION['user_info']['userid'])){
                 echo "bind 4 failed";
             }
+            else {
+                echo "bind 4 successful\n";
+            }
+
             if(!$stmt->execute()){
                 echo "execute failed";
+            }
+            else {
+                echo "execute successful\n";
             }
         }
 
