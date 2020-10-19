@@ -67,9 +67,6 @@ include 'common/connection.php';
                 echo "<input class='proceed_btn' type='submit' value='Complete Purchase'>";
                 echo "<input type='hidden' name='item' value='".$invId."'></form>";
             }
-            
-            //clear session item variable
-            unset($_SESSION['item']);
         }
         catch (Exception $e){
             echo "Something went wrong. Please try again.";
