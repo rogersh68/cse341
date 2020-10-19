@@ -47,9 +47,17 @@ include 'common/connection.php';
             if(!$stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)')) {
                 echo "Prepare failed";
             }
+            else {
+                echo "Prepare successful";
+            }
+
             if(!$stmt->bindParam(':commdesc', $_POST['commDesc'], PDO::PARAM_STR)){
                 echo "bind 1 failed";
             }
+            else {
+                echo "bind 1 successful";
+            }
+
             if(!$stmt->bindParam(':accepted', false)){
                 echo "bind 2 failed";
             }
