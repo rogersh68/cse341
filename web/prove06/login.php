@@ -17,14 +17,20 @@ include 'common/connection.php';
     <?php 
     // display the header
     include 'common/header.php';
+
+    echo "PRE-FORM --->";
+    echo "SESSION: ";
+    print_r($_SESSION);
+    echo "POST: ";
+    print_r($_POST);
+    echo "GET: ";
+    print_r($_GET);
+
     ?>
 
     <main>
         <h1>Login</h1> 
         <div class="login_div">
-            <?php
-            echo "<form action='".$_GET['page'].".php' method='post'>";
-            ?>
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
                 <label for="email">Email</label>
                 <input type="email" required name="email">
@@ -81,6 +87,15 @@ include 'common/connection.php';
                 $_SESSION['login_message'] = "Email is required.";
                 header($retry);
             }
+
+            echo "POST-FORM --->";
+    echo "SESSION: ";
+    print_r($_SESSION);
+    echo "POST: ";
+    print_r($_POST);
+    echo "GET: ";
+    print_r($_GET);
+
             ?>
 
             <p class="center_p">or</p>
