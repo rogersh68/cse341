@@ -34,7 +34,7 @@ include 'common/connection.php';
             echo "<p>".$row['invdesc']."</p>";
             echo "<p><b>Created by: ".$row['firstname']." ".$row['lastname']."</b></p>";
             if (isset($row['userid'])) {
-                echo "<p class='red_notice'>SOLD</p>";
+                echo "<p class='red_notice'>SOLD</p></div></div>";
             }
             else {
                 echo "<form action='purchase.php' method='post'>";
