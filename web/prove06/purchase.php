@@ -44,6 +44,8 @@ include 'common/connection.php';
             $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            print_r($itemInfo);
             
             //display the item
             echo "<div class='item_overview'>";
