@@ -86,7 +86,7 @@ include 'common/connection.php';
                     $_SESSION['logged_in'] = TRUE;
                     $_SESSION['user_info']['userid'] = $userInfo[0]['userid'];
                     $_SESSION['user_info']['useremail'] = $userInfo[0]['useremail'];
-                    header($redirect);
+                    //header($redirect);
                 } 
             }
             else {
