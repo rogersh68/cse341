@@ -45,7 +45,9 @@ include 'common/connection.php';
             $stmt->execute();
             $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            echo $invId;
             print_r($itemInfo);
+            print_r($_SESSION);
             
             //display the item
             echo "<div class='item_overview'>";
