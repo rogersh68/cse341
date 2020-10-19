@@ -58,7 +58,7 @@ include 'common/connection.php';
                 echo "bind 1 successful\n";
             }
 
-            if(!$stmt->bindParam(':accepted', 0, PDO::PARAM_BOOL)){
+            if(!$stmt->bindParam(':accepted', 'f', PDO::PARAM_BOOL)){
                 echo "bind 2 failed";
             }
             else {
