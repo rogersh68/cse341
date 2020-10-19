@@ -65,26 +65,21 @@ include 'common/connection.php';
                 echo "bind 2 successful\n";
             }
 
-            if(!$stmt->bindParam(':creatorid', $_POST['creator'], PDO::PARAM_INT)){
+            if(!$stmt->bindValue(':creatorid', $_POST['creator'], PDO::PARAM_INT)){
                 echo "bind 3 failed";
             }
             else {
                 echo "bind 3 successful\n";
             }
 
-            if(!$stmt->bindParam(':userid', $_SESSION['user_info']['userid'])){
+            if(!$stmt->bindValue(':userid', $_SESSION['user_info']['userid'])){
                 echo "bind 4 failed";
             }
             else {
                 echo "bind 4 successful\n";
             }
 
-            if(!$stmt->execute()){
-                echo "execute failed";
-            }
-            else {
-                echo "execute successful\n";
-            }
+            //$stmt->execute();
         }
 
         //if user is a creator display creator information
