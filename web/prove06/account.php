@@ -34,7 +34,6 @@ include 'common/connection.php';
         $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
         $stmt->execute();
         $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        print_r($userInfo);
 
         //if user is a creator display creator information
         if($userInfo[0]['creator']) {
