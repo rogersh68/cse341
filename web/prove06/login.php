@@ -17,19 +17,19 @@ include 'common/connection.php';
     <?php 
     // display the header
     include 'common/header.php';
-
-    echo "PRE-FORM --->";
-    echo "SESSION: ";
-    print_r($_SESSION);
-    echo "POST: ";
-    print_r($_POST);
-    echo "GET: ";
-    print_r($_GET);
-
     ?>
 
     <main>
         <h1>Login</h1> 
+        <?php 
+            echo "PRE-FORM --->";
+            echo "SESSION: ";
+            print_r($_SESSION);
+            echo "POST: ";
+            print_r($_POST);
+            echo "GET: ";
+            print_r($_GET);
+        ?>
         <div class="login_div">
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
                 <label for="email">Email</label>
