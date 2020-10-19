@@ -54,9 +54,15 @@ include 'common/connection.php';
                 $retry = "Location: login.php?page=".$_GET['page'];
                 $redirect = "Location: ".$_GET['page'].".php";
 
+                echo $retry;
+                echo $redirect;
+
                 // set login credential variables
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
                 $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+
+                echo $email;
+                echo $password;
 
                 // get credentials from db
                 try{
