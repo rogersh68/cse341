@@ -2,6 +2,11 @@
 //start session
 session_start();
 
+//redirect to account if already logged in
+if($_SESSION['logged_in']) {
+    header('Location: account.php');
+}
+
 // connect to the database
 include 'common/connection.php'; 
 ?>
@@ -75,7 +80,7 @@ include 'common/connection.php';
                     header($redirect);
                 } 
             }
-            else {
+            if(empty($_POST['email'])) {
                 $_SESSION['login_message'] = "Email is required.";
                 header($retry);
             }
