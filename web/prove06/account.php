@@ -31,8 +31,7 @@ include 'common/connection.php';
         <?php 
         //insert any new commissions into database
         if(isset($_POST['creator']) and isset($_POST['commDesc'])) {
-            $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) 
-                                    VALUES (:commdesc, :accepted, :creatorid, :userid)');
+            $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)');
             $stmt->bindValue(':commdesc', $_POST['commDesc'], PDO::PARAM_STR);
             $stmt->bindValue(':accepted', false);
             $stmt->bindValue(':creatorid', $_POST['creator'], PDO::PARAM_INT);
