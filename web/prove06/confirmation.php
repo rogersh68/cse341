@@ -4,9 +4,11 @@ session_start();
 
 // redirect to login page if user is not logged in
 if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
-    $_SESSION['page'] = "purchase";
-    $_SESSION['item'] = $_POST['item'];
-    header('Location: confirmation.php');
+    $_SESSION['page'] = "confirmation";
+    if(empty($_SESSION['item'])) {
+        $_SESSION['item'] = $_POST['item'];
+    }
+    header('Location: login.php');
 }
 
 // connect to the database
