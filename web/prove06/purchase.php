@@ -2,12 +2,10 @@
 //start session
 session_start();
 
-// set item to session in case of redirect
-$_SESSION['item'] = $_POST['item'];
-
 // redirect to login page if user is not logged in
 if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
     $_SESSION['page'] = "purchase";
+    $_SESSION['item'] = $_POST['item'];
     header('Location: login.php');
 }
 
@@ -37,7 +35,13 @@ include 'common/connection.php';
         try {
             
             // get id from form
-            $invId = $_SESSION['item'];
+            if(isset($_SESSION['item'])) {
+                $invId = $_SESSION['item'];
+            }
+            else {
+                $invId = $_POST['item'];
+            }
+            
             
             // query database for the item
             $stmt = $db->prepare('SELECT * FROM inventory WHERE invid=:invid');
