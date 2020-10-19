@@ -30,7 +30,7 @@ include 'common/connection.php';
         <h1>My Account</h1>
         <?php 
         //insert any new commissions into database
-        if(isset($_POST)) {
+        if(isset($_POST['creator']) and isset($_POST['commDesc'])) {
             $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) 
                                     VALUES (:commdesc, :accepted, :creatorid, :userid)');
             $stmt->bindValue(':commdesc', $_POST['commDesc'], PDO::PARAM_STR);
