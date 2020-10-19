@@ -20,7 +20,7 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
 <body>
     <?php 
     print_r($_SESSION);
-
+    echo "\n".$_SESSION['user_info']['userid'];
     // display the header
     //include 'common/header.php';
     ?>
