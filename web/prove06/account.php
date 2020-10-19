@@ -32,10 +32,10 @@ include 'common/connection.php';
         //insert any new commissions into database
         if(isset($_POST['creator']) and isset($_POST['commDesc'])) {
             $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)');
-            $stmt->bindValue(':commdesc', $_POST['commDesc'], PDO::PARAM_STR);
-            $stmt->bindValue(':accepted', false);
-            $stmt->bindValue(':creatorid', $_POST['creator'], PDO::PARAM_INT);
-            $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
+            $stmt->bindParam(':commdesc', $_POST['commDesc'], PDO::PARAM_STR);
+            $stmt->bindParam(':accepted', false);
+            $stmt->bindParam(':creatorid', $_POST['creator'], PDO::PARAM_INT);
+            $stmt->bindParam(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
             $stmt->execute();
         }
 
