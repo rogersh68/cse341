@@ -29,57 +29,21 @@ include 'common/connection.php';
     <main>
         <h1>My Account</h1>
         <?php 
-        
-
         // get user's info
         $stmt = $db->prepare('SELECT * FROM public.user WHERE userid=:userid');
         $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
         $stmt->execute();
         $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        print_r($_POST);
-        print_r($_SESSION);
-
         //insert any new commissions into database
         if(isset($_POST['creator']) && isset($_POST['commDesc'])) {
-            echo "Prepare Statment\n";
-
-            if(!$stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)')) {
-                echo "Prepare failed";
-            }
-            else {
-                echo "Prepare successful\n";
-            }
-
-            if(!$stmt->bindValue(':commdesc', $_POST['commDesc'], PDO::PARAM_STR)){
-                echo "bind 1 failed";
-            }
-            else {
-                echo "bind 1 successful\n";
-            }
-
-            if(!$stmt->bindValue(':accepted', FALSE, PDO::PARAM_BOOL)){
-                echo "bind 2 failed";
-            }
-            else {
-                echo "bind 2 successful\n";
-            }
-
-            if(!$stmt->bindValue(':creatorid', $_POST['creator'], PDO::PARAM_INT)){
-                echo "bind 3 failed";
-            }
-            else {
-                echo "bind 3 successful\n";
-            }
-
-            if(!$stmt->bindValue(':userid', $_SESSION['user_info']['userid'])){
-                echo "bind 4 failed";
-            }
-            else {
-                echo "bind 4 successful\n";
-            }
-
-            //$stmt->execute();
+            $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) 
+            VALUES (:commdesc, :accepted, :creatorid, :userid)');
+            $stmt->bindValue(':commdesc', $_POST['commDesc'], PDO::PARAM_STR);
+            $stmt->bindValue(':accepted', FALSE, PDO::PARAM_BOOL);
+            $stmt->bindValue(':creatorid', $_POST['creator'], PDO::PARAM_INT);
+            $stmt->bindValue(':userid', $userInfo[0]['userid']);
+            $stmt->execute();
         }
 
         //if user is a creator display creator information
