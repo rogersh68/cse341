@@ -46,7 +46,7 @@ include 'common/connection.php';
             $stmt2 = $db->prepare('UPDATE inventory SET userid = :userid WHERE invid = :invid');
             $stmt2->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
             $stmt2->bindValue(':invid', $invId, PDO::PARAM_INT);
-            //$stmt2->execute();
+            $stmt2->execute();
           
             // query database for item info
             $stmt = $db->prepare('SELECT invname FROM inventory WHERE invid=:invid');
