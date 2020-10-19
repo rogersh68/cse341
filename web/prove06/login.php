@@ -22,12 +22,12 @@ include 'common/connection.php';
     <main>
         <h1>Login</h1> 
         <?php 
-            echo "PRE-FORM --->";
-            echo "SESSION: ";
+            echo "PRE-FORM --->\n";
+            echo "SESSION: \n";
             print_r($_SESSION);
-            echo "POST: ";
+            echo "POST: \n";
             print_r($_POST);
-            echo "GET: ";
+            echo "GET: \n";
             print_r($_GET);
         ?>
         <div class="login_div">
@@ -54,15 +54,19 @@ include 'common/connection.php';
                 $retry = "Location: login.php?page=".$_GET['page'];
                 $redirect = "Location: ".$_GET['page'].".php";
 
-                echo $retry;
-                echo $redirect;
+                echo $retry."\n";
+                echo $redirect."\n";
+
+                $redirect2 = "Location: ".$_SESSION['page'].".php";
+
+                echo $redirect2."\n";
 
                 // set login credential variables
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
                 $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
-                echo $email;
-                echo $password;
+                echo $email."\n";
+                echo $password."\n";
 
                 // get credentials from db
                 try{
@@ -94,12 +98,12 @@ include 'common/connection.php';
                 header($retry);
             }
 
-            echo "POST-FORM --->";
-    echo "SESSION: ";
+            echo "POST-FORM --->\n";
+    echo "SESSION: \n";
     print_r($_SESSION);
-    echo "POST: ";
+    echo "POST: \n";
     print_r($_POST);
-    echo "GET: ";
+    echo "GET: \n";
     print_r($_GET);
 
             ?>
