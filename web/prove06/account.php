@@ -29,6 +29,17 @@ include 'common/connection.php';
     <main>
         <h1>My Account</h1>
         <?php 
+        
+
+        // get user's info
+        $stmt = $db->prepare('SELECT * FROM public.user WHERE userid=:userid');
+        $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
+        $stmt->execute();
+        $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        print_r($_POST);
+        print_r($_SESSION);
+
         //insert any new commissions into database
         if(isset($_POST['creator']) and isset($_POST['commDesc'])) {
             $stmt = $db->prepare('INSERT INTO commission (commdesc, accepted, creatorid, userid) VALUES (:commdesc, :accepted, :creatorid, :userid)');
@@ -38,12 +49,6 @@ include 'common/connection.php';
             $stmt->bindParam(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
             $stmt->execute();
         }
-
-        // get user's info
-        $stmt = $db->prepare('SELECT * FROM public.user WHERE userid=:userid');
-        $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
-        $stmt->execute();
-        $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         //if user is a creator display creator information
         if($userInfo[0]['creator']) {
