@@ -51,22 +51,16 @@ include 'common/connection.php';
             // log the user in
             if(isset($_POST['email'])) {
                 // set destination variables
-                $retry = "Location: login.php?page=".$_GET['page'];
-                $redirect = "Location: ".$_GET['page'].".php";
+                $retry = "Location: login.php";
+                $redirect = "Location: ".$_SESSION['page'].".php";
 
                 echo $retry."\n";
                 echo $redirect."\n";
 
-                $redirect2 = "Location: ".$_SESSION['page'].".php";
-
-                echo $redirect2."\n";
 
                 // set login credential variables
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
                 $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-
-                echo $email."\n";
-                echo $password."\n";
 
                 // get credentials from db
                 try{
@@ -90,7 +84,7 @@ include 'common/connection.php';
                     $_SESSION['logged_in'] = TRUE;
                     $_SESSION['user_info']['userid'] = $userInfo[0]['userid'];
                     $_SESSION['user_info']['useremail'] = $userInfo[0]['useremail'];
-                    //header($redirect);
+                    header($redirect);
                 } 
             }
             else {
