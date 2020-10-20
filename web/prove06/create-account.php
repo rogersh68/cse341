@@ -50,8 +50,7 @@ $userEmail, $userPassword){
 
 // if post is set, call appropriate functions to add user to db
 if(isset($_POST)) {
-    echo "<script>console.log('POST:');</script>";
-    echo "<script>console.log(".$_POST.");</script>";
+    print_r($_POST);
 
     $firstName = $_POST['firstname'];
     $lastName = $_POST['lastname'];
