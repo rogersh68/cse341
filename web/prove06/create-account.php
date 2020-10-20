@@ -7,7 +7,10 @@ include 'common/connection.php';
 
 // add new creator to database
 function addCreator($db, $firstName, $lastName, $userImg, 
-    $userEmail, $userPassword, $creatorDesc) {
+$userEmail, $userPassword, $creatorDesc) {
+    
+    echo "<script>console.log('addCreator');</script>";
+
     $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator, creatordesc)
     VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator, :creatordesc)');
     $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
@@ -26,7 +29,10 @@ function addCreator($db, $firstName, $lastName, $userImg,
 
 // add new user to database
 function addUser($db, $firstName, $lastName, $userImg, 
-    $userEmail, $userPassword){
+$userEmail, $userPassword){
+    
+    echo "<script>console.log('addUser');</script>";
+
     $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator)
     VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator)');
     $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
@@ -44,6 +50,9 @@ function addUser($db, $firstName, $lastName, $userImg,
 
 // if post is set, call appropriate functions to add user to db
 if(isset($_POST)) {
+    echo "<script>console.log('POST:');</script>";
+    echo "<script>console.log(".$_POST.");</script>";
+
     $firstName = $_POST['firstname'];
     $lastName = $_POST['lastname'];
     $userImg = $_POST['img'];
@@ -71,6 +80,7 @@ if(isset($_POST)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christina's Creations | Create Account</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="scripts/create-account.js"></script>
 </head>
 <body>
     <?php 
@@ -94,7 +104,7 @@ if(isset($_POST)) {
             <input type="password" name="password">
 
             <label for="creator">Are you signing up as a Creator?</label>
-            <input type="radio" id="yes" name="creator" value="t">
+            <input type="radio" id="yes" name="creator" value="t" onclick="toggleDesc()">
             <label class="sbs" for="yes">Yes</label>
             <br>
             <input type="radio" id="no" name="creator" value="f">
