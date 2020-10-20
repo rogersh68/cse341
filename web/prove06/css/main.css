@@ -277,7 +277,6 @@ footer {
 }
 
 .create_account_form input[type="radio"] {
-    width: auto;
     display: inline;
 }
 

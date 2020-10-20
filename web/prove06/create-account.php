@@ -96,7 +96,7 @@ if(!empty($_POST)) {
             <input type="password" name="password">
 
             <label for="creator">Are you signing up as a Creator?</label>
-            <input type="radio" id="yes" name="creator" value="t" onclick="toggleDesc()">
+            <input type="radio" id="yes" name="creator" value="t" onchange="toggleDesc()">
             <label class="sbs" for="yes">Yes</label>
             <br>
             <input type="radio" id="no" name="creator" value="f">
