@@ -49,7 +49,7 @@ $userEmail, $userPassword){
 }
 
 // if post is set, call appropriate functions to add user to db
-if(isset($_POST)) {
+if(!empty($_POST)) {
     print_r($_POST);
 
     $firstName = $_POST['firstname'];
@@ -68,6 +68,9 @@ if(isset($_POST)) {
         addUser($db, $firstName, $lastName, $userImg, 
         $userEmail, $userPassword);
     }   
+}
+else {
+    echo "<script>console.log('post is empty');</script>";
 }
 
 ?>
