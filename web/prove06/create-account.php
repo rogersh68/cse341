@@ -1,6 +1,67 @@
 <?php 
+//start session
+session_start();
+
 // connect to the database
 include 'common/connection.php'; 
+
+// add new creator to database
+function addCreator($db, $firstName, $lastName, $userImg, 
+    $userEmail, $userPassword, $creatorDesc) {
+    $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator, creatordesc)
+    VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator, :creatordesc)');
+    $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+    $stmt->bindValue(':lastname', $lastName, PDO::PARAM_STR);
+    $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
+    $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':userpassword', $userPassword, PDO::PARAM_STR);
+    $stmt->bindValue(':creator', TRUE, PDO::PARAM_BOOL);
+    $stmt->bindValue(':creatordesc', $creatorDesc, PDO::PARAM_STR);
+    $stmt->execute();
+
+    //redirect to login page
+    $_SESSION['login_message'] = "Your account was created, please sign in.";
+    header('Location: login.php');
+}
+
+// add new user to database
+function addUser($db, $firstName, $lastName, $userImg, 
+    $userEmail, $userPassword){
+    $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator)
+    VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator)');
+    $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+    $stmt->bindValue(':lastname', $lastName, PDO::PARAM_STR);
+    $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
+    $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':userpassword', $userPassword, PDO::PARAM_STR);
+    $stmt->bindValue(':creator', FALSE, PDO::PARAM_BOOL);
+    $stmt->execute();
+    
+    //redirect to login page
+    $_SESSION['login_message'] = "Your account was created, please sign in.";
+    header('Location: login.php');
+}
+
+// if post is set, call appropriate functions to add user to db
+if(isset($_POST)) {
+    $firstName = $_POST['firstname'];
+    $lastName = $_POST['lastname'];
+    $userImg = $_POST['img'];
+    $userEmail = $_POST['email'];
+    $userPassword = $_POST['password'];
+    
+    // check if creator option was selected
+    if($_POST['creator'] == "t") {
+        $creatorDesc = $_POST['desc'];
+        addCreator($db, $firstName, $lastName, $userImg, 
+            $userEmail, $userPassword, $creatorDesc);
+    }
+    else {
+        addUser($db, $firstName, $lastName, $userImg, 
+        $userEmail, $userPassword);
+    }   
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +80,7 @@ include 'common/connection.php';
 
     <main>
         <h1>Create Account</h1>
-        <form class="create_account_form" action="login.php" method="post">
+        <form class="create_account_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
             <label for="firstname">First Name</label>
             <input type="text" name="firstname">
 
@@ -33,10 +94,10 @@ include 'common/connection.php';
             <input type="password" name="password">
 
             <label for="creator">Are you signing up as a Creator?</label>
-            <input type="radio" id="yes" name="creator" value="true">
+            <input type="radio" id="yes" name="creator" value="t">
             <label class="sbs" for="yes">Yes</label>
             <br>
-            <input type="radio" id="no" name="creator" value="false">
+            <input type="radio" id="no" name="creator" value="f">
             <label class ="sbs" for="no">No</label>
 
             <label class="new_creator_desc" for="desc">Tell us about yourself and what you create</label>
@@ -46,7 +107,7 @@ include 'common/connection.php';
             <input type="text" name="img">
 
             <input class="proceed_btn" type="submit" value="Create Account">
-        </form>   
+        </form>
     </main>
 
     <?php 
