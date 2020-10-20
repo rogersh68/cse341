@@ -8,9 +8,6 @@ include 'common/connection.php';
 // add new creator to database
 function addCreator($db, $firstName, $lastName, $userImg, 
 $userEmail, $userPassword, $creatorDesc) {
-    
-    echo "<script>console.log('addCreator');</script>";
-
     $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator, creatordesc)
     VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator, :creatordesc)');
     $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
@@ -30,9 +27,6 @@ $userEmail, $userPassword, $creatorDesc) {
 // add new user to database
 function addUser($db, $firstName, $lastName, $userImg, 
 $userEmail, $userPassword){
-    
-    echo "<script>console.log('addUser');</script>";
-
     $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator)
     VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator)');
     $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
@@ -69,10 +63,6 @@ if(!empty($_POST)) {
         $userEmail, $userPassword);
     }   
 }
-else {
-    echo "<script>console.log('post is empty');</script>";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -112,8 +102,10 @@ else {
             <input type="radio" id="no" name="creator" value="f">
             <label class ="sbs" for="no">No</label>
 
+            <div id="desc_div">
             <label class="new_creator_desc" for="desc">Tell us about yourself and what you create</label>
             <textarea class="new_creator_desc" name="desc"></textarea>
+            </div>
 
             <label for="img">Profile Picture</label>
             <input type="text" name="img">
