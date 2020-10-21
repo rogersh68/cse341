@@ -72,7 +72,7 @@ include 'common/connection.php';
             }
 
             //display list of commissions
-            $stmt = $db->prepare('SELECT c.commid c.commDesc, c.accepted, u.firstname, u.lastname, u.useremail FROM commission AS c JOIN public.user AS u ON c.userid = u.userid WHERE c.creatorid = :creatorid');
+            $stmt = $db->prepare('SELECT c.commid, c.commDesc, c.accepted, u.firstname, u.lastname, u.useremail FROM commission AS c JOIN public.user AS u ON c.userid = u.userid WHERE c.creatorid = :creatorid');
             $stmt->bindValue(':creatorid', $userInfo[0]['userid'], PDO::PARAM_INT);
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
