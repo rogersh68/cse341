@@ -102,6 +102,7 @@ include 'common/connection.php';
                 $stmt->bindValue(':accepted', TRUE, PDO::PARAM_BOOL);
                 $stmt->bindValue(':commid', $_POST['commid'], PDO::PARAM_INT);
                 $stmt->execute();
+                header('Location: account.php');
             }
         }
         
