@@ -95,7 +95,7 @@ include 'common/connection.php';
                             else {
                                 echo "bind 3 successful";
                             }
-                            if (!$stmt->bindValue(':invImg', $invImg, PDO::PARAM_STR)){
+                            if (!$stmt->bindValue(':invimg', $invImg, PDO::PARAM_STR)){
                                 echo "bind 4 failed";
                             }
                             else {
