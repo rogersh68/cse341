@@ -58,30 +58,54 @@ include 'common/connection.php';
                 <?php
                 //update the item and redirect to account w/message
                 if (array_key_exists('update', $_POST)) {
+                    print_r($_POST);
                     try {
                             $invId = filter_input(INPUT_POST, 'invid', FILTER_VALIDATE_INT);
                             $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
                             $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
                             $invImg = "images/inv_placeholder.svg";
 
+                            echo $invId;
+                            echo $invName;
+                            echo $invDesc;
+                            echo $invImg;
+
                             //update item info on database
                             if(!$stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid')) {
                                 echo "prepare unsuccessful";
                             }
+                            else {
+                                echo "prepare successful";
+                            }
                             if(!$stmt->bindValue(':invid', $invId, PDO::PARAM_INT)){
                                 echo "bind 1 failed";
+                            }
+                            else {
+                                echo "bind 1 successful";
                             }
                             if(!$stmt->bindValue(':invname', $invName, PDO::PARAM_STR)){
                                 echo "bind 2 failed";
                             }
+                            else {
+                                echo "bind 2 successful";
+                            }
                             if(!$stmt->bindValue(':invdesc', $invDesc, PDO::PARAM_STR)){
                                 echo "bind 3 failed";
+                            }
+                            else {
+                                echo "bind 3 successful";
                             }
                             if (!$stmt->bindValue(':invImg', $invImg, PDO::PARAM_STR)){
                                 echo "bind 4 failed";
                             }
+                            else {
+                                echo "bind 4 successful";
+                            }
                             if(!$stmt->execute()){
                                 echo "execute failed";
+                            }
+                            else {
+                                echo "ex successful";
                             }
                             $_SESSION['message'] = "Update was successful.";
                             //header('Location: account.php');
