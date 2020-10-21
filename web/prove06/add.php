@@ -21,7 +21,42 @@ include 'common/connection.php';
 
     <main>
         <h1>Add New Item</h1>
-        
+        <form class="add_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+            <label for="invname">Item Name</label>
+            <input type="text" name="invname">
+
+            <label for="invdesc">Item Description</label>
+            <textarea name="invdesc"></textarea>
+
+            <label for="invimg">Item Image</label>
+            <input type="text" name="invimg">
+
+            <input type="submit" class="proceed_btn" name="add" value="Add">
+        </form>
+        <?php
+        if (array_key_exists('add', $_POST)) {
+            try {
+                $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
+                $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
+                $invImg = "images/inv_placeholder.svg";
+                $creatorId = $_SESSION['user_info']['userid'];
+    
+                //insert item into db
+                $stmt = $db->prepare('INSERT INTO inventory (invname, invdesc, invimg, creatorid) VALUES (:invname, :invdesc, :invimg, :creatorid)');
+                $stmt->bindValue(':invname', $invName, PDO::PARAM_STR);
+                $stmt->bindValue(':invdesc', $invDesc, PDO::PARAM_STR);
+                $stmt->bindValue(':invdesc', $invImg, PDO::PARAM_STR);
+                $stmt->bindValue(':creatorid', $creatorId, PDO::PARAM_INT);
+                $stmt->execute();
+                $_SESSION['message'] = "New item successfully added.";
+                header('Location: account.php');
+            }
+            catch(Exception $e) {
+                $_SESSION['message'] = "Something went wrong. Please try again.";
+                header('Location: account.php');
+            }
+        }
+        ?>
     </main>
 
     <?php 

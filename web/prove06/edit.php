@@ -58,17 +58,11 @@ include 'common/connection.php';
                 <?php
                 //update the item and redirect to account w/message
                 if (array_key_exists('update', $_POST)) {
-                    print_r($_POST);
                     try {
                             $invId = filter_input(INPUT_POST, 'invid', FILTER_VALIDATE_INT);
                             $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
                             $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
                             $invImg = "images/inv_placeholder.svg";
-
-                            echo $invId;
-                            echo $invName;
-                            echo $invDesc;
-                            echo $invImg;
 
                             //update item info on database
                             $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid');
