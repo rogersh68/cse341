@@ -41,7 +41,7 @@ include 'common/connection.php';
             </div>
             <div>
                 <!--Update item info form -->
-                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+                <form class="update_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
                     <label for="invname">Item Name</label>
                     <input type="text" name="invname" value="<?php echo $itemInfo[0]['invname'];?>">
 
@@ -58,6 +58,7 @@ include 'common/connection.php';
                 <?php
                 //update the item and redirect to account w/message
                 if (array_key_exists('update', $_POST)) {
+                    print_r($_POST);
                     try {
                             $invId = filter_input(INPUT_POST, 'invid', FILTER_VALIDATE_INT);
                             $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
@@ -72,11 +73,11 @@ include 'common/connection.php';
                             $stmt->bindValue(':invImg', $invImg, PDO::PARAM_STR);
                             $stmt->execute();
                             $_SESSION['message'] = "Update was successful.";
-                            header('Location: account.php');
+                            //header('Location: account.php');
                     }
                     catch(Exception $e) {
                         $_SESSION['message'] = "Something went wrong. Please try again.";
-                        header('Location: account.php');
+                        //header('Location: account.php');
                     }
                 }
                 ?>

@@ -126,7 +126,7 @@ main div img {
 
 .message {
     margin-left: 40px;
-    margin-bottom: 20px;
+    padding-bottom: 30px;
 }
 
 footer {
@@ -135,6 +135,17 @@ footer {
     padding: 15px;
     margin-left: 150px;
     text-align: center;
+}
+
+.update_form label{
+    display: block;
+}
+
+.update_form input {
+    display: block;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 250px;
 }
 
 .confirmation_form {
