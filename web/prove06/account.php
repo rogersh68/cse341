@@ -72,7 +72,7 @@ include 'common/connection.php';
             }
 
             //display list of commissions
-            $stmt = $db->prepare('SELECT c.commDesc, c.accepted, u.firstname, u.lastname, u.useremail FROM commission AS c JOIN public.user AS u ON c.userid = u.userid WHERE c.creatorid = :creatorid');
+            $stmt = $db->prepare('SELECT c.commId c.commDesc, c.accepted, u.firstname, u.lastname, u.useremail FROM commission AS c JOIN public.user AS u ON c.userid = u.userid WHERE c.creatorid = :creatorid');
             $stmt->bindValue(':creatorid', $userInfo[0]['userid'], PDO::PARAM_INT);
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -86,11 +86,22 @@ include 'common/connection.php';
                     echo "<p class='yellow_notice'>Accepted</p>";
                 }
                 else {
-                    echo "<form>";
+                    echo "<form action='";
+                    echo htmlentities($_SERVER['PHP_SELF']);
+                    echo "' method='post'>";
                     echo "<input class='proceed_btn' type='submit' value='Accept'>";
+                    echo "<input type='hidden' name='commid' value='".$row['commid']."'>";
                     echo "</form>";
                 }
                 echo "</div>";
+            }
+
+            // update accepted commissions
+            if (isset($_POST['commid'])) {
+                $stmt = $db->prepare('UPDATE commission SET accepted = :acceepted WHERE commid = :commid');
+                $stmt->bindValue(':accepted', TRUE, PDO::PARAM_BOOL);
+                $stmt->bindValue(':commid', $_POST['commid'], PDO::PARAM_INT);
+                $stmt->execute();
             }
         }
         
@@ -134,8 +145,6 @@ include 'common/connection.php';
                 echo "</div>";
             }
         }
-
-        
         ?>
     </main>
 
