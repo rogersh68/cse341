@@ -71,48 +71,18 @@ include 'common/connection.php';
                             echo $invImg;
 
                             //update item info on database
-                            if(!$stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid')) {
-                                echo "prepare unsuccessful";
-                            }
-                            else {
-                                echo "prepare successful";
-                            }
-                            if(!$stmt->bindValue(':invid', $invId, PDO::PARAM_INT)){
-                                echo "bind 1 failed";
-                            }
-                            else {
-                                echo "bind 1 successful";
-                            }
-                            if(!$stmt->bindValue(':invname', $invName, PDO::PARAM_STR)){
-                                echo "bind 2 failed";
-                            }
-                            else {
-                                echo "bind 2 successful";
-                            }
-                            if(!$stmt->bindValue(':invdesc', $invDesc, PDO::PARAM_STR)){
-                                echo "bind 3 failed";
-                            }
-                            else {
-                                echo "bind 3 successful";
-                            }
-                            if (!$stmt->bindValue(':invimg', $invImg, PDO::PARAM_STR)){
-                                echo "bind 4 failed";
-                            }
-                            else {
-                                echo "bind 4 successful";
-                            }
-                            if(!$stmt->execute()){
-                                echo "execute failed";
-                            }
-                            else {
-                                echo "ex successful";
-                            }
+                            $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid');
+                            $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
+                            $stmt->bindValue(':invname', $invName, PDO::PARAM_STR);
+                            $stmt->bindValue(':invdesc', $invDesc, PDO::PARAM_STR);
+                            $stmt->bindValue(':invimg', $invImg, PDO::PARAM_STR);
+                            $stmt->execute();
                             $_SESSION['message'] = "Update was successful.";
-                            //header('Location: account.php');
+                            header('Location: account.php');
                     }
                     catch(Exception $e) {
                         $_SESSION['message'] = "Something went wrong. Please try again.";
-                        //header('Location: account.php');
+                        header('Location: account.php');
                     }
                 }
                 ?>
