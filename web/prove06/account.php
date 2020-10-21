@@ -98,7 +98,7 @@ include 'common/connection.php';
 
             // update accepted commissions
             if (array_key_exists('commid', $_POST)) {
-                $stmt = $db->prepare('UPDATE commission SET accepted = :acceepted WHERE commid = :commid');
+                $stmt = $db->prepare('UPDATE commission SET accepted = :accepted WHERE commid = :commid');
                 $stmt->bindValue(':accepted', TRUE, PDO::PARAM_BOOL);
                 $stmt->bindValue(':commid', $_POST['commid'], PDO::PARAM_INT);
                 $stmt->execute();
