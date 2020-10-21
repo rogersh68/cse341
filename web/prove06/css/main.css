@@ -124,6 +124,11 @@ main div img {
     color: #F15025;
 }
 
+.message {
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
 footer {
     background-color: #7F636E;
     color: #F5F5F5;

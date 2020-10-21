@@ -57,7 +57,7 @@ include 'common/connection.php';
             echo "<h2 class='subtitle'>Your Creations</h2>";
             //display any messages
             if(isset($_SESSION['message'])) {
-                echo "<p>".$_SESSION['message']."</p>";
+                echo "<p class='general_notice message'>".$_SESSION['message']."</p>";
                 unset($_SESSION['message']);
             }
             foreach ($rows as $row) {

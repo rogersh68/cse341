@@ -92,7 +92,7 @@ include 'common/connection.php';
 
                 <?php
                 //delete the item and redirect to account w/message
-                if (array_key_exists('update', $_POST)) {
+                if (array_key_exists('delete', $_POST)) {
                     try {
                             $invId = filter_input(INPUT_POST, 'invid', FILTER_VALIDATE_INT);
 
