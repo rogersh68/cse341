@@ -55,6 +55,11 @@ include 'common/connection.php';
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             echo "<h2 class='subtitle'>Your Creations</h2>";
+            //display any messages
+            if(isset($_SESSION['message'])) {
+                echo "<p>".$_SESSION['message']."</p>";
+                unset($_SESSION['message']);
+            }
             foreach ($rows as $row) {
                 echo "<div class='account_items_row'>";
                 echo "<img src='".$row['invimg']."' alt='".$row['invname']."'>";

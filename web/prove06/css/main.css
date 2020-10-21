@@ -308,6 +308,15 @@ footer {
     font-weight: bold;
 }
 
+.delete_btn {
+    display: block;
+    background-color: #F15025;
+    width: 160px;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+}
+
 .account_items_row {
     padding-left: 40px;
     display: grid;
@@ -334,6 +343,7 @@ hr {
 }
 
 .edit_item_div {
+    display: flex;
     padding-left: 40px;
     padding-bottom: 50px;
     padding-top: 50px;
