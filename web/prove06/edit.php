@@ -23,7 +23,7 @@ include 'common/connection.php';
         <h1>Edit Creation</h1>  
         <div class="edit_item_div">
             <div>
-                <h2>Current</h2>
+                <h2>Item's Current Information</h2>
                 <?php
                 // list info for item being edited
                 $stmt = $db->prepare('SELECT * FROM inventory WHERE invid = :invid');
@@ -31,11 +31,11 @@ include 'common/connection.php';
                 $stmt->execute();
                 $itemInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                echo "<h2>Image:</h2>";
+                echo "<h3>Image:</h3>";
                 echo "<img src='".$itemInfo[0]['invimg']."' alt='".$itemInfo[0]['invname']."'>";
-                echo "<h2>Name:</h2>";
-                echo "<h3>".$itemInfo[0]['invname']."</h3>";
-                echo "<h2>Description:</h2>";
+                echo "<h3>Name:</h2>";
+                echo "<p>".$itemInfo[0]['invname']."</p>";
+                echo "<h3>Description:</h3>";
                 echo "<p>".$itemInfo[0]['invdesc']."</p>";
                 ?>
             </div>

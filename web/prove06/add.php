@@ -40,14 +40,6 @@ include 'common/connection.php';
                 $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
                 $invImg = "images/inv_placeholder.svg";
                 $creatorId = $_SESSION['user_info']['userid'];
-
-                //test info
-                print_r($_SESSION);
-                print_r($_POST);
-                echo $invName;
-                echo $invDesc;
-                echo $invImg;
-                echo $creatorId;
     
                 //insert item into db
                 $stmt = $db->prepare('INSERT INTO inventory (invname, invdesc, invimg, creatorid) VALUES (:invname, :invdesc, :invimg, :creatorid)');
@@ -57,11 +49,11 @@ include 'common/connection.php';
                 $stmt->bindValue(':creatorid', $creatorId, PDO::PARAM_INT);
                 $stmt->execute();
                 $_SESSION['message'] = "New item successfully added.";
-                //header('Location: account.php');
+                header('Location: account.php');
             }
             catch(Exception $e) {
                 $_SESSION['message'] = "Something went wrong. Please try again.";
-                //header('Location: account.php');
+                header('Location: account.php');
             }
         }
         ?>

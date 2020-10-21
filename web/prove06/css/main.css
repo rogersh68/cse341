@@ -148,6 +148,37 @@ footer {
     width: 250px;
 }
 
+.update_form textarea {
+    width: 250px;
+    height: 100px;
+}
+
+.add_form {
+    padding-left: 40px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.add_form label{
+    display: block;
+}
+
+.add_form input {
+    display: block;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 250px;
+}
+
+.update_form textarea {
+    width: 250px;
+    height: 100px;
+}
+
+.add_link {
+    margin: 40px;
+}
+
 .confirmation_form {
     padding: 30px;
     margin: auto;
