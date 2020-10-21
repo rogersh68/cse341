@@ -87,7 +87,7 @@ include 'common/connection.php';
                 }
                 else {
                     echo "<form action='";
-                    echo '<?php echo htmlentitites($_SERVER["PHP_SELF"]);?>';
+                    echo $_SERVER['PHP_SELF'];
                     echo "' method='post'>";
                     echo "<input class='proceed_btn' type='submit' value='Accept'>";
                     echo "<input type='hidden' name='commid' value='".$row['commid']."'>";
