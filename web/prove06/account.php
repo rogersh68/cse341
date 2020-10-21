@@ -86,9 +86,7 @@ include 'common/connection.php';
                     echo "<p class='yellow_notice'>Accepted</p>";
                 }
                 else {
-                    echo "<form action='";
-                    echo htmlentities($_SERVER['PHP_SELF']);
-                    echo "' method='post'>";
+                    echo '<form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post">';
                     echo "<input class='proceed_btn' type='submit' value='Accept'>";
                     echo "<input type='hidden' name='commid' value='".$row['commid']."'>";
                     echo "</form>";
