@@ -22,11 +22,17 @@ include './prove06/common/connection.php';
     </form>
 
     <?php
+    print_r($_POST);
     if (!empty($_POST)) {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
+        echo $username;
+        echo $password;
+
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        echo $hashedPassword;
 
         try {
             $stmt = $db->prepare('INSERT INTO team_user (username, userpassword) VALUES (:username, :userpassword)');
