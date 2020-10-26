@@ -55,7 +55,7 @@ catch (PDOException $ex)
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if (password_verify($password, $result['password'])) {
+        if (password_verify($password, $result['userpassword'])) {
             $_SESSION['user'] = $username;
             header('Location: index.php');
             die();
