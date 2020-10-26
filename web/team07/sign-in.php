@@ -47,8 +47,8 @@ catch (PDOException $ex)
 
     <?php
     if (!empty($_POST)) {
-        $username = filter_input(INPUT_POST, $_POST['username'], FILTER_SANITIZE_STRING);
-        $password = filter_input(INPUT_POST, $_POST['password'], FILTER_SANITIZE_STRING);
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
         $stmt = $db->prepare('SELECT userpassword FROM team_user WHERE username=:username');
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
