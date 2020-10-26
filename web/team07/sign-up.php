@@ -22,15 +22,16 @@ include './prove06/common/connection.php';
     </form>
 
     <?php
+    print_r($_POST);
     if (!empty($_POST)) {
         $username = filter_input(INPUT_POST, $_POST['username'], FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, $_POST['password'], FILTER_SANITIZE_STRING);
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $db->prepare('INSERT INTO team_user (username, password) VALUES (:username, :password)');
+        $stmt = $db->prepare('INSERT INTO team_user (username, team_user.password) VALUES (:username, :userpassword)');
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-        $stmt->bindValue(':password', $hashedPassword, PDO::PARAM_STR);
+        $stmt->bindValue(':userpassword', $hashedPassword, PDO::PARAM_STR);
         $stmt->execute();
 
         header('Location: sign-in.php');
