@@ -30,7 +30,7 @@ include './prove06/common/connection.php';
         $username = filter_input(INPUT_POST, $_POST['username'], FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, $_POST['password'], FILTER_SANITIZE_STRING);
 
-        $stmt = $db->prepare('SELECT password FROM team_user WHERE username=:username');
+        $stmt = $db->prepare('SELECT userpassword FROM team_user WHERE username=:username');
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
