@@ -21,6 +21,8 @@ catch (PDOException $ex)
   echo 'Error!: ' . $ex->getMessage();
   die();
 }
+
+function console_log( $data ){  echo '<script>';    echo 'console.log("'. $data .'")';    echo '</script>';    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +30,7 @@ catch (PDOException $ex)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+
 </head>
 <body>
     <h1>Sign Up</h1>
@@ -56,6 +59,7 @@ catch (PDOException $ex)
     </form>
 
     <?php
+    console_log(print_r($_SESSION));
     if (!empty($_POST)) {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -64,16 +68,16 @@ catch (PDOException $ex)
         $pattern = '/.{7,}/';
         $pattern2 = '/\d/';
         if(preg_match($pattern, $password) and preg_match($pattern2, $password)) {
-            echo "in first if";
+            console_log("first if");
         
             if($password != $passwordConf){
-                echo "in second if";
+                console_log("second if");
                 $_SESSION['message'] = "Passwords don't match";
                 header('Location: sign-up.php');
                 die();
             }
             else {
-                echo "in else";
+                console_log("second if's else");
                 unset($_SESSION['message']);
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -92,7 +96,7 @@ catch (PDOException $ex)
             }
         }
         else {
-            echo "in first if's else";
+            console_log("first if's else");
             $_SESSION['message'] = "Password must be at least 7 characters and contain one number.";
             header('Location: sign-up.php');
             die();
