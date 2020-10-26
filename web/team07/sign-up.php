@@ -31,12 +31,26 @@ catch (PDOException $ex)
 </head>
 <body>
     <h1>Sign Up</h1>
+    <?php
+    if(isset($_SESSION['message'])) {
+        echo "<p style='color:red;'>".$_SESSION['message']."</p>";
+    }?>
     <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username">
         <br>
-        <label for="password">Password:</label>
+        <label for="password">Password:</label><?php
+    if(isset($_SESSION['message'])) {
+        echo "<p style='color:red;'>*</p>";
+    }?>
         <input type="password" id="password" name="password">
+        <br>
+        <label for="passwordConf">Confirm Password:</label><?php
+    if(isset($_SESSION['message'])) {
+        echo "<p style='color:red;'>*</p>";
+        
+    }?>
+        <input type="password" id="passwordConf" name="passwordConf">
         <br>
         <input type="submit" value="Sign Up">
     </form>
@@ -45,21 +59,43 @@ catch (PDOException $ex)
     if (!empty($_POST)) {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+        $passwordConf = filter_input(INPUT_POST, 'passwordConf', FILTER_SANITIZE_STRING);
 
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $pattern = '/.{7,}/i';
+        $pattern2 = '/\d/i';
+        if(preg_match($pattern, $password) or preg_match($pattern2, $password)) {
+            
+        
+            if($password != $passwordConf){
+                
+                $_SESSION['message'] = "Passwords don't match";
+                header('Location: sign-up.php');
 
-        try {
-            $stmt = $db->prepare('INSERT INTO team_user (username, userpassword) VALUES (:username, :userpassword)');
-            $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-            $stmt->bindValue(':userpassword', $hashedPassword, PDO::PARAM_STR);
-            $stmt->execute();
+            }
+            else {
+                unset($_SESSION['message']);
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            header('Location: sign-in.php');
-            die();
+                try {
+                    $stmt = $db->prepare('INSERT INTO team_user (username, userpassword) VALUES (:username, :userpassword)');
+                    $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+                    $stmt->bindValue(':userpassword', $hashedPassword, PDO::PARAM_STR);
+                    $stmt->execute();
+
+                    header('Location: sign-in.php');
+                    die();
+                }
+                catch(PDOException $e) {
+                    echo "Error: ".$e->getMessage();
+                }
+            }
         }
-        catch(PDOException $e) {
-            echo "Error: ".$e->getMessage();
+        else {
+            $_SESSION['message'] = "Password must be at least 7 characters and contain one number.";
+            header('Location: sign-up.php');
         }
+
+        
     }
     ?>
 </body>
