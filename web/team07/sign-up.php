@@ -23,8 +23,8 @@ include './prove06/common/connection.php';
 
     <?php
     if (!empty($_POST)) {
-        $username = filter_input(INPUT_POST, $_POST['username'], FILTER_SANITIZE_STRING);
-        $password = filter_input(INPUT_POST, $_POST['password'], FILTER_SANITIZE_STRING);
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
