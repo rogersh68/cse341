@@ -29,13 +29,18 @@ include './prove06/common/connection.php';
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $db->prepare('INSERT INTO team_user (username, team_user.password) VALUES (:username, :userpassword)');
-        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-        $stmt->bindValue(':userpassword', $hashedPassword, PDO::PARAM_STR);
-        $stmt->execute();
+        try {
+            $stmt = $db->prepare('INSERT INTO team_user (username, team_user.password) VALUES (:username, :userpassword)');
+            $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+            $stmt->bindValue(':userpassword', $hashedPassword, PDO::PARAM_STR);
+            $stmt->execute();
 
-        header('Location: sign-in.php');
-        die();
+            header('Location: sign-in.php');
+            die();
+        }
+        catch(Exception $e) {
+            echo "Error: ".$e;
+        }
     }
     ?>
 </body>
