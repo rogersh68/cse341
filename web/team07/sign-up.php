@@ -63,16 +63,17 @@ catch (PDOException $ex)
 
         $pattern = '/.{7,}/i';
         $pattern2 = '/\d/i';
-        if(preg_match($pattern, $password) or preg_match($pattern2, $password)) {
-            
+        if(preg_match($pattern, $password) and preg_match($pattern2, $password)) {
+            echo "in first if";
         
             if($password != $passwordConf){
-                
+                echo "in second if";
                 $_SESSION['message'] = "Passwords don't match";
                 header('Location: sign-up.php');
-
+                die();
             }
             else {
+                echo "in else";
                 unset($_SESSION['message']);
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -91,8 +92,10 @@ catch (PDOException $ex)
             }
         }
         else {
+            echo "in first if's else";
             $_SESSION['message'] = "Password must be at least 7 characters and contain one number.";
             header('Location: sign-up.php');
+            die();
         }
 
         
