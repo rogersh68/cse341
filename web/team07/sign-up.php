@@ -30,7 +30,7 @@ include './prove06/common/connection.php';
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            if(!$stmt = $db->prepare('INSERT INTO team_user (username, team_user.password) VALUES (:username, :userpassword)')){
+            if(!$stmt = $db->prepare('INSERT INTO team_user (username, userpassword) VALUES (:username, :userpassword)')){
                 
             }
             else {
