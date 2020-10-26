@@ -54,8 +54,8 @@ catch (PDOException $ex)
             $stmt->bindValue(':userpassword', $hashedPassword, PDO::PARAM_STR);
             $stmt->execute();
 
-            //header('Location: sign-in.php');
-            //die();
+            header('Location: sign-in.php');
+            die();
         }
         catch(PDOException $e) {
             echo "Error: ".$e->getMessage();

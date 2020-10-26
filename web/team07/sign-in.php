@@ -3,7 +3,7 @@
 session_start();
 
 // connect to the database
-include './prove06/common/connection.php';
+require './prove06/common/connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
