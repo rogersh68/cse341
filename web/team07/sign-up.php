@@ -59,7 +59,7 @@ function console_log( $data ){  echo '<script>';    echo 'console.log("'. $data 
     </form>
 
     <?php
-    console_log(print_r($_SESSION));
+    print_r($_SESSION);
     if (!empty($_POST)) {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
