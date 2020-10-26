@@ -37,8 +37,8 @@ include './prove06/common/connection.php';
             header('Location: sign-in.php');
             die();
         }
-        catch(Exception $e) {
-            echo "Error: ".$e;
+        catch(PDOException $e) {
+            echo "Error: ".$e->getMessage();
         }
     }
     ?>
