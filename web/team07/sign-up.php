@@ -30,10 +30,18 @@ include './prove06/common/connection.php';
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $stmt = $db->prepare('INSERT INTO team_user (username, team_user.password) VALUES (:username, :userpassword)');
-            $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-            $stmt->bindValue(':userpassword', $hashedPassword, PDO::PARAM_STR);
-            $stmt->execute();
+            if(!$stmt = $db->prepare('INSERT INTO team_user (username, team_user.password) VALUES (:username, :userpassword)')){
+                
+            }
+            else {
+                echo "prepare";
+            }
+            if (!$stmt->bindValue(':username', $username, PDO::PARAM_STR)){}
+            else{echo "username";}
+            if(!$stmt->bindValue(':userpassword', $hashedPassword, PDO::PARAM_STR)){}
+            else{echo "password";}
+            if(!$stmt->execute()){}
+            else{echo "execute";}
 
             header('Location: sign-in.php');
             die();
