@@ -3,6 +3,14 @@ session_start();
 
 // connect to the database
 include 'common/connection.php'; 
+
+function uploadFile($name, $imgDirectory) {
+    $filename = $_FILES[$name]['name'];
+    $source = $_FILES[$name]['tmp_name'];
+    $target = $imgDirectory.'/'.$filename;
+    move_uploaded_file($source, $target);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +57,7 @@ include 'common/connection.php';
                     <textarea name="invdesc"><?php echo $itemInfo[0]['invdesc'];?></textarea>
 
                     <label for="invimg">Item Image</label>
-                    <input type="text" name="invimg" value="<?php echo $itemInfo[0]['invimg'];?>">
+                    <input type="file" name="imgfile" value="<?php echo $itemInfo[0]['invimg'];?>">
 
                     <input type="submit" class="proceed_btn" value="Update">
                     <input type="hidden" name="update" value="true">
@@ -62,7 +70,12 @@ include 'common/connection.php';
                             $invId = filter_input(INPUT_POST, 'invid', FILTER_VALIDATE_INT);
                             $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
                             $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
-                            $invImg = "images/inv_placeholder.svg";
+                            
+                            //store the img file and save filepath to db
+                            $imgDirectory = $_SERVER['DOCUMENT_ROOT'].'/prove06/images';
+                            uploadFile('imgfile', $imgDirectory);
+
+                            $invImg = "images/".$_FILES['imgfile']['name'];
 
                             //update item info on database
                             $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid');
