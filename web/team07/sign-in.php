@@ -53,7 +53,7 @@ catch (PDOException $ex)
         $stmt = $db->prepare('SELECT userpassword FROM team_user WHERE username=:username');
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (password_verify($password, $result['userpassword'])) {
             $_SESSION['user'] = $username;
@@ -61,7 +61,7 @@ catch (PDOException $ex)
             die();
         }
         else {
-            
+            echo "wrong password";
         }
     }
     ?>
