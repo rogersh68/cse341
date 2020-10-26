@@ -61,8 +61,8 @@ catch (PDOException $ex)
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
         $passwordConf = filter_input(INPUT_POST, 'passwordConf', FILTER_SANITIZE_STRING);
 
-        $pattern = '/.{7,}/i';
-        $pattern2 = '/\d/i';
+        $pattern = '/.{7,}/';
+        $pattern2 = '/\d/';
         if(preg_match($pattern, $password) and preg_match($pattern2, $password)) {
             echo "in first if";
         
