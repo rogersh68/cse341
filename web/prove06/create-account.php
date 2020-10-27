@@ -5,9 +5,15 @@ session_start();
 // connect to the database
 include 'common/connection.php'; 
 
+// get upload function
+require 'common/upload.php';
+
 // add new creator to database
-function addCreator($db, $firstName, $lastName, $userImg, 
+function addCreator($db, $firstName, $lastName, 
 $userEmail, $userPassword, $creatorDesc) {
+    uploadFile('imgfile');
+    $userImg = "images/".$_FILES['imgfile']['name'];
+
     $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator, creatordesc)
     VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator, :creatordesc)');
     $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
@@ -25,8 +31,11 @@ $userEmail, $userPassword, $creatorDesc) {
 }
 
 // add new user to database
-function addUser($db, $firstName, $lastName, $userImg, 
+function addUser($db, $firstName, $lastName, 
 $userEmail, $userPassword){
+    uploadFile('imgfile');
+    $userImg = "images/".$_FILES['imgfile']['name'];
+
     $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator)
     VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator)');
     $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
@@ -44,22 +53,19 @@ $userEmail, $userPassword){
 
 // if post is set, call appropriate functions to add user to db
 if(!empty($_POST)) {
-    print_r($_POST);
-
     $firstName = $_POST['firstname'];
     $lastName = $_POST['lastname'];
-    $userImg = $_POST['img'];
     $userEmail = $_POST['email'];
     $userPassword = $_POST['password'];
     
     // check if creator option was selected
     if($_POST['creator'] == "t") {
         $creatorDesc = $_POST['desc'];
-        addCreator($db, $firstName, $lastName, $userImg, 
+        addCreator($db, $firstName, $lastName, 
             $userEmail, $userPassword, $creatorDesc);
     }
     else {
-        addUser($db, $firstName, $lastName, $userImg, 
+        addUser($db, $firstName, $lastName, 
         $userEmail, $userPassword);
     }   
 }
@@ -82,7 +88,7 @@ if(!empty($_POST)) {
 
     <main>
         <h1>Create Account</h1>
-        <form class="create_account_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+        <form class="create_account_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
             <label for="firstname">First Name</label>
             <input type="text" name="firstname">
 
@@ -107,8 +113,8 @@ if(!empty($_POST)) {
             <textarea class="new_creator_desc" name="desc"></textarea>
             </div>
 
-            <label for="img">Profile Picture</label>
-            <input type="text" name="img">
+            <label for="imgfile">Profile Picture</label>
+            <input type="file" name="imgfile">
 
             <input class="proceed_btn" type="submit" value="Create Account">
         </form>

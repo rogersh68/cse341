@@ -4,6 +4,9 @@ session_start();
 
 // connect to the database
 include 'common/connection.php'; 
+
+// get upload function
+require 'common/upload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,15 +24,15 @@ include 'common/connection.php';
 
     <main>
         <h1>Add New Item</h1>
-        <form class="add_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+        <form class="add_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
             <label for="invname">Item Name</label>
             <input type="text" name="invname">
 
             <label for="invdesc">Item Description</label>
             <textarea name="invdesc"></textarea>
 
-            <label for="invimg">Item Image</label>
-            <input type="text" name="invimg">
+            <label for="imgfile">Item Image</label>
+            <input type="file" name="imgfile">
 
             <input type="submit" class="proceed_btn" name="add" value="Add">
         </form>
@@ -38,7 +41,11 @@ include 'common/connection.php';
             try {
                 $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
                 $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
-                $invImg = "images/inv_placeholder.svg";
+
+                //upload the img file and save filepath to db
+                uploadFile('imgfile');
+                $invImg = "images/".$_FILES['imgfile']['name'];
+
                 $creatorId = $_SESSION['user_info']['userid'];
     
                 //insert item into db

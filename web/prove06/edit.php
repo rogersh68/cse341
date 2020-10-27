@@ -4,20 +4,8 @@ session_start();
 // connect to the database
 require 'common/connection.php'; 
 
-function uploadFile($name, $imgDirectory) {
-    $filename = $_FILES[$name]['name'];
-    $source = $_FILES[$name]['tmp_name'];
-    $target = $imgDirectory.'/'.$filename;
-    $moved = move_uploaded_file($source, $target);
-    echo "<script>alert('".$moved."')</script>";
-}
-
-function console_log($data) {
-    echo "<script>";
-    echo "console.log(".$data.");";
-    echo "</script>";
-}
-
+// get upload function
+require 'common/upload.php';
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +24,6 @@ function console_log($data) {
 
     <main>
         <h1>Edit Creation</h1>  
-        <?php
-        console_log("working");
-        ?>
         <div class="edit_item_div">
             <div>
                 <h2>Item's Current Information</h2>
@@ -51,7 +36,7 @@ function console_log($data) {
 
                 echo "<h3>Image:</h3>";
                 echo "<img src='".$itemInfo[0]['invimg']."' alt='".$itemInfo[0]['invname']."'>";
-                echo "<h3>Name:</h2>";
+                echo "<h3>Name:</h3>";
                 echo "<p>".$itemInfo[0]['invname']."</p>";
                 echo "<h3>Description:</h3>";
                 echo "<p>".$itemInfo[0]['invdesc']."</p>";
@@ -66,7 +51,7 @@ function console_log($data) {
                     <label for="invdesc">Item Description</label>
                     <textarea name="invdesc"><?php echo $itemInfo[0]['invdesc'];?></textarea>
 
-                    <label for="invimg">Item Image</label>
+                    <label for="imgfile">Item Image</label>
                     <input type="file" name="imgfile" value="<?php echo $itemInfo[0]['invimg'];?>">
 
                     <input type="submit" class="proceed_btn" value="Update">
@@ -76,24 +61,14 @@ function console_log($data) {
                 <?php
                 //update the item and redirect to account w/message
                 if (array_key_exists('update', $_POST)) {
-                    console_log("post if");
                     try {
                             $invId = filter_input(INPUT_POST, 'invid', FILTER_VALIDATE_INT);
                             $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
                             $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
-
-                            chmod("/prove06/images", 0755);
                             
-                            //store the img file and save filepath to db
-                            $imgDirectory = $_SERVER['DOCUMENT_ROOT'].'/prove06/images';
-                            uploadFile('imgfile', $imgDirectory);
-
+                            //upload the img file and save filepath to db
+                            uploadFile('imgfile');
                             $invImg = "images/".$_FILES['imgfile']['name'];
-
-                            console_log("DIRECTORY:");
-                            console_log($imgDirectory);
-                            console_log("FILENAME:");
-                            console_log($_FILES['imgfile']['name']);
 
                             //update item info on database
                             $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid');
