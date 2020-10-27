@@ -2,7 +2,7 @@
 session_start();
 
 // connect to the database
-include 'common/connection.php'; 
+require 'common/connection.php'; 
 
 function uploadFile($name, $imgDirectory) {
     $filename = $_FILES[$name]['name'];
@@ -72,6 +72,7 @@ function console_log($data) {
                 <?php
                 //update the item and redirect to account w/message
                 if (array_key_exists('update', $_POST)) {
+                    console_log("post if");
                     try {
                             $invId = filter_input(INPUT_POST, 'invid', FILTER_VALIDATE_INT);
                             $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
