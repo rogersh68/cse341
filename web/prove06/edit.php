@@ -80,6 +80,8 @@ function console_log($data) {
                             $invId = filter_input(INPUT_POST, 'invid', FILTER_VALIDATE_INT);
                             $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
                             $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
+
+                            chmod("/prove06/images", 0755);
                             
                             //store the img file and save filepath to db
                             $imgDirectory = $_SERVER['DOCUMENT_ROOT'].'/prove06/images';
