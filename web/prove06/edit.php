@@ -11,6 +11,12 @@ function uploadFile($name, $imgDirectory) {
     move_uploaded_file($source, $target);
 }
 
+function console_log($data) {
+    echo "<script>";
+    echo "console.log(".$data.");";
+    echo "<script>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -76,6 +82,11 @@ function uploadFile($name, $imgDirectory) {
                             uploadFile('imgfile', $imgDirectory);
 
                             $invImg = "images/".$_FILES['imgfile']['name'];
+
+                            console_log("DIRECTORY:");
+                            console_log($imgDirectory);
+                            console_log("FILENAME:");
+                            console_log($_FILES['imgfile']['name']);
 
                             //update item info on database
                             $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid');

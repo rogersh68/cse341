@@ -31,7 +31,29 @@ function console_log( $data ){  echo '<script>';    echo 'console.log("'. $data 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-
+    <script>
+        function checkPasswords(e) {
+            var pass1 = document.getElementById('password').value;
+            var pass2 = document.getElementById('passConf').value;
+            
+            var regex2 = /\d/;
+            var regex1 = RegExp('/.{7,}/')
+            if(pass1 != pass2) {
+                preventDefault(e);
+                return false;
+            }
+            else {
+                if(regex1.test(pass1) && regex2.test(pass1)) {
+                    return true;
+                }
+                else {
+                    preventDefault(e)
+                    return false;
+                }
+                
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Sign Up</h1>
@@ -56,7 +78,7 @@ function console_log( $data ){  echo '<script>';    echo 'console.log("'. $data 
     }?>
         <input type="password" id="passwordConf" name="passwordConf">
         <br>
-        <input type="submit" value="Sign Up">
+        <input type="submit" value="Sign Up" onsubmit="checkPasswords(e)">
     </form>
 
     <?php
