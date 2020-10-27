@@ -14,7 +14,7 @@ function uploadFile($name, $imgDirectory) {
 function console_log($data) {
     echo "<script>";
     echo "console.log(".$data.");";
-    echo "<script>";
+    echo "</script>";
 }
 
 ?>
