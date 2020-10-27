@@ -35,6 +35,9 @@ function console_log($data) {
 
     <main>
         <h1>Edit Creation</h1>  
+        <?php
+        console_log("working");
+        ?>
         <div class="edit_item_div">
             <div>
                 <h2>Item's Current Information</h2>
