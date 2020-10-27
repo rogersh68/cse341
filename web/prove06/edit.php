@@ -8,7 +8,8 @@ function uploadFile($name, $imgDirectory) {
     $filename = $_FILES[$name]['name'];
     $source = $_FILES[$name]['tmp_name'];
     $target = $imgDirectory.'/'.$filename;
-    move_uploaded_file($source, $target);
+    $moved = move_uploaded_file($source, $target);
+    echo "<script>alert(".$moved.")</script>";
 }
 
 function console_log($data) {
