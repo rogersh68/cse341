@@ -9,7 +9,7 @@ function uploadFile($name, $imgDirectory) {
     $source = $_FILES[$name]['tmp_name'];
     $target = $imgDirectory.'/'.$filename;
     $moved = move_uploaded_file($source, $target);
-    echo "<script>alert(".$moved.")</script>";
+    echo "<script>alert('".$moved."')</script>";
 }
 
 function console_log($data) {
@@ -59,7 +59,7 @@ function console_log($data) {
             </div>
             <div>
                 <!--Update item info form -->
-                <form class="update_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+                <form class="update_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
                     <label for="invname">Item Name</label>
                     <input type="text" name="invname" value="<?php echo $itemInfo[0]['invname'];?>">
 
