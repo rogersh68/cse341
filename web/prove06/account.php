@@ -130,6 +130,8 @@ include 'common/connection.php';
                 echo "<p>".$row['invdesc']."</p></div>";
                 echo "<p></p></div>";
             }
+
+            echo "<a href='edit-profile.php' title='edit profile' class='proceed_link add_link'>Edit Profile</a>";
             
             //display list of commissions
             $stmt = $db->prepare('SELECT c.commDesc, c.accepted, u.firstname, u.lastname 
@@ -153,7 +155,7 @@ include 'common/connection.php';
                 }
                 echo "</div>";
             }
-            echo "<a href='edit-profile.php' title='edit profile' class='proceed_link add_link'>Edit Profile</a>";
+            
         }
         ?>
     </main>
