@@ -29,7 +29,7 @@ require 'common/upload.php';
                 <?php
                 // list info for user being edited
                 $stmt = $db->prepare('SELECT * FROM public.user WHERE userid = :userid');
-                $stmt->bindValue(':userid', $SESSION['user_info']['userid'], PDO::PARAM_INT);
+                $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
                 $stmt->execute();
                 $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 

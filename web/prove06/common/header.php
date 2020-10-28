@@ -21,7 +21,7 @@
             $stmt->execute();
             $profImg = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            echo "<a class='logout_header_link' href='logout.php'><img width='80px' height='auto' src='".$profImg['userimg']."'>Logout</a>";
+            echo "<a class='logout_header_link' href='logout.php'><img width='80px' height='auto' src='".$profImg['userimg']."'><br>Logout</a>";
         }
         ?>
 </header>
