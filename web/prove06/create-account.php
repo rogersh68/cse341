@@ -102,11 +102,10 @@ if(!empty($_POST)) {
             <input type="password" name="password">
 
             <label for="creator">Are you signing up as a Creator?</label>
-            <input type="radio" id="yes" name="creator" value="t" onclick="toggleDesc()">
+            <input type="checkbox" id="yes" name="creator" value="t" onclick="toggleDesc()">
             <label class="sbs" for="yes">Yes</label>
             <br>
-            <input type="radio" id="no" name="creator" value="f">
-            <label class ="sbs" for="no">No</label>
+
 
             <div class="hide" id="desc_div">
             <label class="new_creator_desc" for="desc">Tell us about yourself and what you create</label>
