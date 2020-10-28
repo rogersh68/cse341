@@ -1,19 +1,24 @@
 <?php 
 session_start();
 
+// redirect to login page if user is not logged in
+if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
+    $_SESSION['page'] = "edit";
+    header('Location: login.php');
+}
+
 // connect to the database
 require 'common/connection.php'; 
 
 // get upload function
 require 'common/upload.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christina's Creations | Edit Creations</title>
+    <title>Christina's Creations | Edit Item</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -23,7 +28,7 @@ require 'common/upload.php';
     ?>
 
     <main>
-        <h1>Edit Creation</h1>  
+        <h1>Edit Item</h1>  
         <div class="edit_item_div">
             <div>
                 <h2>Item's Current Information</h2>
@@ -100,7 +105,7 @@ require 'common/upload.php';
 
                 <br>
                 <!--Delete item form -->
-                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+                <form class="delete_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
                     <p class="general_notice">Once you delete an item, it cannot be retreived.</p>
                     <input type="submit" class="delete_btn" value="Delete">
                     <input type="hidden" name="delete" value="true">

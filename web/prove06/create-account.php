@@ -117,7 +117,6 @@ if(!empty($_POST)) {
             Yes</label>
             <br>
 
-
             <div class="hide" id="desc_div">
             <label class="new_creator_desc" for="desc">Tell us about yourself and what you create</label>
             <textarea class="new_creator_desc" name="desc"></textarea>

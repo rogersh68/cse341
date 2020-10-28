@@ -11,7 +11,6 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
 // connect to the database
 include 'common/connection.php'; 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +84,7 @@ include 'common/connection.php';
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<hr><h2 class='subtitle'>Your Commissions</h2>";
+            echo "<hr><h2 class='subtitle account_sub'>Your Commissions</h2>";
             foreach ($rows as $row){
                 echo "<div class='account_comm_row'>";
                 echo "<p>".$row['commdesc']."</p>";
@@ -142,7 +141,7 @@ include 'common/connection.php';
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<hr><h2 class='subtitle'>Your Requested Commissions</h2>";
+            echo "<hr><h2 class='subtitle account_sub'>Your Requested Commissions</h2>";
             foreach($rows as $row) {
                 echo "<div class='account_comm_row'>";
                 echo "<p>".$row['commdesc']."</p>";
@@ -155,7 +154,6 @@ include 'common/connection.php';
                 }
                 echo "</div>";
             }
-            
         }
         ?>
     </main>

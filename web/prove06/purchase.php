@@ -12,7 +12,6 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
 // connect to the database
 include 'common/connection.php'; 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

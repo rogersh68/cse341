@@ -137,6 +137,15 @@ footer {
     text-align: center;
 }
 
+.account_sub {
+    margin-bottom: 0;
+    padding-bottom: 40px;
+}
+
+.delete_form {
+    padding-left: 30px;
+}
+
 .update_form {
     padding: 30px;
 }

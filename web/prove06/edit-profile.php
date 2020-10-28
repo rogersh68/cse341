@@ -1,6 +1,12 @@
 <?php 
 session_start();
 
+// redirect to login page if user is not logged in
+if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
+    $_SESSION['page'] = "edit-profile";
+    header('Location: login.php');
+}
+
 // connect to the database
 require 'common/connection.php'; 
 
@@ -138,8 +144,7 @@ require 'common/upload.php';
                                     $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
                                     $stmt->execute();
                                 }
-                            }
-                            
+                            }        
                             
                             $_SESSION['message'] = "Update was successful.";
                             header('Location: account.php');
@@ -151,8 +156,6 @@ require 'common/upload.php';
                 }
                 ?>
             </div>
-            
-            
         </div>
         
     </main>

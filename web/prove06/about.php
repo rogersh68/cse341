@@ -1,3 +1,10 @@
+<?php 
+//start session
+session_start();
+
+// connect to the database
+include 'common/connection.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

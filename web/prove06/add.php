@@ -2,6 +2,12 @@
 // start session
 session_start();
 
+// redirect to login page if user is not logged in
+if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
+    $_SESSION['page'] = "add";
+    header('Location: login.php');
+}
+
 // connect to the database
 include 'common/connection.php'; 
 
@@ -26,10 +32,10 @@ require 'common/upload.php';
         <h1>Add New Item</h1>
         <form class="add_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
             <label for="invname">Item Name</label>
-            <input type="text" name="invname">
+            <input type="text" name="invname" required>
 
             <label for="invdesc">Item Description</label>
-            <textarea name="invdesc"></textarea>
+            <textarea name="invdesc" required></textarea>
 
             <label for="imgfile">Item Image</label>
             <input type="file" name="imgfile">
