@@ -68,6 +68,7 @@ require 'common/upload.php';
                             
                             //upload the img file and save filepath to db
                             print_r($_POST);
+                            print_r($_FILES);
                             uploadFile('imgfile');
                             $invImg = "images/".$_FILES['imgfile']['name'];
                             
