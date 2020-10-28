@@ -70,7 +70,7 @@ require 'common/upload.php';
                             print_r($_POST);
                             print_r($_FILES);
 
-                            if(!empty($_FILES['imgfile'])){
+                            if(!empty($_FILES['imgfile']['name'])){
                                 echo "Files not empty";
                                 uploadFile('imgfile');
                                 $invImg = "images/".$_FILES['imgfile']['name'];
