@@ -16,7 +16,12 @@
             echo "<a class='account_header_link' href='account.php'>My Account</a>";
         }
         else {
-            echo "<a class='logout_header_link' href='logout.php'><img src='images/profile_placeholder.svg'>Logout</a>";
+            $stmt = $db->prepare('SELECT userimg FROM public.user WHERE userid = :userid');
+            $stmt->bindValue(':userid', $_SESSION['user_info']['userid'], PDO::PARAM_INT);
+            $stmt->execute();
+            $profImg = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            echo "<a class='logout_header_link' href='logout.php'><img width='80px' height='auto' src='".$profImg['userimg']."'>Logout</a>";
         }
         ?>
 </header>
