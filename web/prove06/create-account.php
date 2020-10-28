@@ -14,29 +14,21 @@ $userEmail, $userPassword, $creatorDesc) {
     if(!empty($_FILES['imgfile']['name'])) {
         uploadFile('imgfile');
         $userImg = "images/".$_FILES['imgfile']['name'];
-
-        $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator, creatordesc)
-        VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator, :creatordesc)');
-        $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
-        $stmt->bindValue(':lastname', $lastName, PDO::PARAM_STR);
-        $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
-        $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
-        $stmt->bindValue(':userpassword', $userPassword, PDO::PARAM_STR);
-        $stmt->bindValue(':creator', TRUE, PDO::PARAM_BOOL);
-        $stmt->bindValue(':creatordesc', $creatorDesc, PDO::PARAM_STR);
-        $stmt->execute();
     }
     else {
-        $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, useremail, userpassword, creator, creatordesc)
-        VALUES (:firstname, :lastname, :useremail, :userpassword, :creator, :creatordesc)');
-        $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
-        $stmt->bindValue(':lastname', $lastName, PDO::PARAM_STR);
-        $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
-        $stmt->bindValue(':userpassword', $userPassword, PDO::PARAM_STR);
-        $stmt->bindValue(':creator', TRUE, PDO::PARAM_BOOL);
-        $stmt->bindValue(':creatordesc', $creatorDesc, PDO::PARAM_STR);
-        $stmt->execute();
+        $userImg = "images/profile_placeholder.svg";
     }
+
+    $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator, creatordesc)
+    VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator, :creatordesc)');
+    $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+    $stmt->bindValue(':lastname', $lastName, PDO::PARAM_STR);
+    $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
+    $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':userpassword', $userPassword, PDO::PARAM_STR);
+    $stmt->bindValue(':creator', TRUE, PDO::PARAM_BOOL);
+    $stmt->bindValue(':creatordesc', $creatorDesc, PDO::PARAM_STR);
+    $stmt->execute();
 
     //redirect to login page
     $_SESSION['login_message'] = "Your account was created, please sign in.";
@@ -49,28 +41,20 @@ $userEmail, $userPassword){
     if(!empty($_FILES['imgfile']['name'])) {
         uploadFile('imgfile');
         $userImg = "images/".$_FILES['imgfile']['name'];
-
-        $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator)
-        VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator)');
-        $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
-        $stmt->bindValue(':lastname', $lastName, PDO::PARAM_STR);
-        $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
-        $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
-        $stmt->bindValue(':userpassword', $userPassword, PDO::PARAM_STR);
-        $stmt->bindValue(':creator', FALSE, PDO::PARAM_BOOL);
-        $stmt->execute();
     }
     else {
-        $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, useremail, userpassword, creator)
-        VALUES (:firstname, :lastname, :useremail, :userpassword, :creator)');
-        $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
-        $stmt->bindValue(':lastname', $lastName, PDO::PARAM_STR);
-        $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
-        $stmt->bindValue(':userpassword', $userPassword, PDO::PARAM_STR);
-        $stmt->bindValue(':creator', FALSE, PDO::PARAM_BOOL);
-        $stmt->execute();
+        $userImg = "images/profile_placeholder.svg";
     }
-    
+
+    $stmt = $db->prepare('INSERT INTO public.user (firstname, lastname, userimg, useremail, userpassword, creator)
+    VALUES (:firstname, :lastname, :userimg, :useremail, :userpassword, :creator)');
+    $stmt->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+    $stmt->bindValue(':lastname', $lastName, PDO::PARAM_STR);
+    $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
+    $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':userpassword', $userPassword, PDO::PARAM_STR);
+    $stmt->bindValue(':creator', FALSE, PDO::PARAM_BOOL);
+    $stmt->execute();
     
     //redirect to login page
     $_SESSION['login_message'] = "Your account was created, please sign in.";
@@ -98,7 +82,6 @@ if(!empty($_POST)) {
     }   
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
