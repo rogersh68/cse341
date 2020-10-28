@@ -21,7 +21,7 @@ function uploadFile($name) {
     console_log("TARGET -->");
     console_log($target);
 
-    $moved = move_uploaded_file($source, $target);
+    $moved = copy($source, $imgDirectory);
 
     console_log("MOVED -->");
     console_log($moved);
@@ -29,6 +29,6 @@ function uploadFile($name) {
 
 function console_log($data) {
     echo "<script>";
-    echo "console.log(".$data.");";
+    echo "console.log('".$data."');";
     echo "</script>";
 }
