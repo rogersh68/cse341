@@ -7,7 +7,6 @@ require 'common/connection.php';
 // get upload function
 require 'common/upload.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +29,7 @@ require 'common/upload.php';
                 <?php
                 // list info for user being edited
                 $stmt = $db->prepare('SELECT * FROM public.user WHERE userid = :userid');
-                $stmt->bindValue(':userid', $_POST['invid'], PDO::PARAM_INT);
+                $stmt->bindValue(':userid', $SESSION['user_info']['userid'], PDO::PARAM_INT);
                 $stmt->execute();
                 $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
