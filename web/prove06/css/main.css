@@ -276,13 +276,14 @@ footer {
 
 .creator_desc {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 175px 1fr;
     border-bottom: 3px solid #725A64;
     padding: 25px;
 }
 
 .creator_desc img {
     margin-right: 25px;
+    max-width: 150px;
 }
 
 .creator_desc h3 {
