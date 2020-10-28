@@ -32,9 +32,9 @@ CREATE TABLE public.inventory
 INSERT INTO public.user (firstName, lastName, userImg, userEmail, userPassword, creator) VALUES ('Hannah', 'Rogers', 'images/profile_placeholder.svg', 'user@site.com', 'password', FALSE);
 INSERT INTO public.user (firstName, lastName, userImg, userEmail, userPassword, creator, creatorDesc) VALUES ('Christina', 'Rogers', 'images/profile_placeholder.svg', 'creator@site.com', 'password', TRUE, 'I have always been very crafty. I love to knit and have been doing it as a hobby since I was a kid.');
 
-INSERT INTO public.commission (commDesc, accepted, creatorId, userId) VALUES ('I would love a hand knitted, pink sweater', FALSE, 2, 1);
-INSERT INTO public.commission (commDesc, accepted, creatorId, userId) VALUES ('I would like a pair of socks.', TRUE, 2, 1);
+INSERT INTO public.commission (commDesc, accepted, creatorId, userId) VALUES ('I would love a hand knitted, pink sweater', FALSE, 1, 2);
+INSERT INTO public.commission (commDesc, accepted, creatorId, userId) VALUES ('I would like a pair of socks.', TRUE, 1, 2);
 
-INSERT INTO public.inventory (invName, invDesc, invImg, creatorId) VALUES ('Knitted Blanket', 'A warm, hand knitted, gray blanket. Perfect as a gift.', 'images/inv_placeholder.svg', 2);
-INSERT INTO public.inventory (invName, invDesc, invImg, creatorId) VALUES ('Knitted Sweater', 'A perfect sweater for the winter. Made with fuzzy white yarn.', 'images/inv_placeholder.svg', 2);
-INSERT INTO public.inventory (invName, invDesc, invImg, creatorId, userId) VALUES ('Knitted Mittens', 'A pair of lovely, warm, hand-knitted mittens made with a yellow yarn.', 'images/inv_placeholder.svg', 2, 1);
+INSERT INTO public.inventory (invName, invDesc, invImg, creatorId) VALUES ('Knitted Blanket', 'A warm, hand knitted, gray blanket. Perfect as a gift.', 'images/inv_placeholder.svg', 1);
+INSERT INTO public.inventory (invName, invDesc, invImg, creatorId) VALUES ('Knitted Sweater', 'A perfect sweater for the winter. Made with fuzzy white yarn.', 'images/inv_placeholder.svg', 1);
+INSERT INTO public.inventory (invName, invDesc, invImg, creatorId, userId) VALUES ('Knitted Mittens', 'A pair of lovely, warm, hand-knitted mittens made with a yellow yarn.', 'images/inv_placeholder.svg', 1, 2);
