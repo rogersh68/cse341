@@ -77,6 +77,7 @@ include 'common/connection.php';
             }
 
             echo "<a href='add.php' title='add item' class='proceed_link add_link'>Add Item</a>";
+            echo "<a href='edit-profile' title='edit profile' class='proceed_link add_link'>Edit Profile</a>";
 
             //display list of commissions
             $stmt = $db->prepare('SELECT c.commid, c.commDesc, c.accepted, u.firstname, u.lastname, u.useremail FROM commission AS c JOIN public.user AS u ON c.userid = u.userid WHERE c.creatorid = :creatorid');
@@ -152,6 +153,7 @@ include 'common/connection.php';
                 }
                 echo "</div>";
             }
+            echo "<a href='edit-profile' title='edit profile' class='proceed_link add_link'>Edit Profile</a>";
         }
         ?>
     </main>
