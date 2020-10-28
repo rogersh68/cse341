@@ -11,7 +11,6 @@ if(!$_SESSION['logged_in'] or empty($_SESSION['logged_in'])) {
 // connect to the database
 include 'common/connection.php'; 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +33,14 @@ include 'common/connection.php';
                 <?php 
                 //populate select list with creators
                 echo "<select name='creator' id='creatorList'>";
-                echo "<option>Select</option>";
+                echo "<option disabled>Select</option>";
                 foreach ($db->query('SELECT userid, firstname, lastname FROM public.user WHERE creator = TRUE') as $row) {
                     echo "<option value='".$row['userid']."'>".$row['firstname']." ".$row['lastname']."</option>";
                 }
                 echo "</select>"
                 ?>
 
-                <label for="commDesc">What would you like to commission?</label>
+                <label for="commDesc">Describe what you want commissioned</label>
                 <textarea name="commDesc"></textarea>
 
                 <p class="general_notice">Please note your request <br>must be accepted.</p>

@@ -330,8 +330,10 @@ footer {
     width: 250px;
 }
 
-.create_account_form input[type="radio"] {
+.create_account_form input[type="checkbox"] {
     display: inline;
+    width: 30px;
+    margin-top: 15px;
 }
 
 .sbs label {
