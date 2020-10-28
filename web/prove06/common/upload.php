@@ -21,10 +21,13 @@ function uploadFile($name) {
     console_log("TARGET -->");
     console_log($target);
 
-    $moved = copy($source, $imgDirectory);
+    $moved = move_uploaded_file($source, $imgDirectory);
 
     console_log("MOVED -->");
     console_log($moved);
+
+    $files = scandir($imgDirectory);
+    console_log(print_r($files));
 }
 
 function console_log($data) {
