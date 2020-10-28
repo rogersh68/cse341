@@ -69,16 +69,30 @@ require 'common/upload.php';
                             //upload the img file and save filepath to db
                             print_r($_POST);
                             print_r($_FILES);
-                            uploadFile('imgfile');
-                            $invImg = "images/".$_FILES['imgfile']['name'];
+
+                            if(!empty($_FILES)){
+                                echo "Files not empty";
+                                uploadFile('imgfile');
+                                $invImg = "images/".$_FILES['imgfile']['name'];
+
+                                //update item info with image on database
+                                $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid');
+                                $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
+                                $stmt->bindValue(':invname', $invName, PDO::PARAM_STR);
+                                $stmt->bindValue(':invdesc', $invDesc, PDO::PARAM_STR);
+                                $stmt->bindValue(':invimg', $invImg, PDO::PARAM_STR);
+                                $stmt->execute();
+                            }
+                            else {
+                                echo "Empty files";
+                                //update item info without image on database
+                                $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc WHERE invid=:invid');
+                                $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
+                                $stmt->bindValue(':invname', $invName, PDO::PARAM_STR);
+                                $stmt->bindValue(':invdesc', $invDesc, PDO::PARAM_STR);
+                                $stmt->execute();
+                            }
                             
-                            //update item info on database
-                            $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid');
-                            $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
-                            $stmt->bindValue(':invname', $invName, PDO::PARAM_STR);
-                            $stmt->bindValue(':invdesc', $invDesc, PDO::PARAM_STR);
-                            $stmt->bindValue(':invimg', $invImg, PDO::PARAM_STR);
-                            $stmt->execute();
                             $_SESSION['message'] = "Update was successful.";
                             //header('Location: account.php');
                     }
