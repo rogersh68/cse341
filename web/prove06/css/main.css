@@ -152,7 +152,7 @@ footer {
     width: 250px;
 }
 
-.update_form textarea {
+.update_form textarea, .add_form textarea {
     width: 250px;
     height: 100px;
     padding: 10px;
