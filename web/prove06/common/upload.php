@@ -29,6 +29,6 @@ function uploadFile($name) {
 
 function console_log($data) {
     echo "<script>";
-    echo $data;
+    echo "console.log(".$data.");";
     echo "</script>";
 }
