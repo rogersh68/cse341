@@ -67,6 +67,7 @@ require 'common/upload.php';
                             $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
                             
                             //upload the img file and save filepath to db
+                            print_r($_POST);
                             uploadFile('imgfile');
                             $invImg = "images/".$_FILES['imgfile']['name'];
                             
@@ -78,7 +79,7 @@ require 'common/upload.php';
                             $stmt->bindValue(':invimg', $invImg, PDO::PARAM_STR);
                             $stmt->execute();
                             $_SESSION['message'] = "Update was successful.";
-                            header('Location: account.php');
+                            //header('Location: account.php');
                     }
                     catch(Exception $e) {
                         $_SESSION['message'] = "Something went wrong. Please try again.";
