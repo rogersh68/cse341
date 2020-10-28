@@ -33,7 +33,7 @@ include 'common/connection.php';
                 <?php 
                 //populate select list with creators
                 echo "<select name='creator' id='creatorList'>";
-                echo "<option disabled>Select</option>";
+                echo "<option disabled selected>Select</option>";
                 foreach ($db->query('SELECT userid, firstname, lastname FROM public.user WHERE creator = TRUE') as $row) {
                     echo "<option value='".$row['userid']."'>".$row['firstname']." ".$row['lastname']."</option>";
                 }
