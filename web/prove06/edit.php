@@ -69,6 +69,8 @@ require 'common/upload.php';
                             //upload the img file and save filepath to db
                             uploadFile('imgfile');
                             $invImg = "images/".$_FILES['imgfile']['name'];
+                            console_log("INVIMG -->");
+                            console_log($invImg);
 
                             //update item info on database
                             $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc, invimg=:invimg WHERE invid=:invid');
@@ -78,11 +80,13 @@ require 'common/upload.php';
                             $stmt->bindValue(':invimg', $invImg, PDO::PARAM_STR);
                             $stmt->execute();
                             $_SESSION['message'] = "Update was successful.";
-                            header('Location: account.php');
+                            console_log($_SESSION['message']);
+                            //header('Location: account.php');
                     }
                     catch(Exception $e) {
                         $_SESSION['message'] = "Something went wrong. Please try again.";
-                        header('Location: account.php');
+                        console_log($_SESSION['message']);
+                        //header('Location: account.php');
                     }
                 }
                 ?>
