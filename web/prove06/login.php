@@ -49,6 +49,7 @@ include 'common/connection.php';
                 // set login credential variables
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
                 $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+                
 
                 // get credentials from db
                 try{
@@ -63,7 +64,7 @@ include 'common/connection.php';
                 }               
 
                 //send user back to login if passwords don't match
-                if($password != $userInfo[0]['userpassword']) {
+                if(!password_verify($password, $userInfo[0]['userpassword'])) {
                     $_SESSION['login_message'] = "Incorrect password. Please try again.";
                     header($retry);
                 }

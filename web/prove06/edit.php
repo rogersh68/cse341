@@ -66,12 +66,8 @@ require 'common/upload.php';
                             $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
                             $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
                             
-                            //upload the img file and save filepath to db
-                            print_r($_POST);
-                            print_r($_FILES);
-
                             if(!empty($_FILES['imgfile']['name'])){
-                                echo "Files not empty";
+                                //upload the img file and save filepath to db
                                 uploadFile('imgfile');
                                 $invImg = "images/".$_FILES['imgfile']['name'];
 
@@ -84,7 +80,6 @@ require 'common/upload.php';
                                 $stmt->execute();
                             }
                             else {
-                                echo "Empty files";
                                 //update item info without image on database
                                 $stmt = $db->prepare('UPDATE inventory SET invname=:invname, invdesc=:invdesc WHERE invid=:invid');
                                 $stmt->bindValue(':invid', $invId, PDO::PARAM_INT);
@@ -94,7 +89,7 @@ require 'common/upload.php';
                             }
                             
                             $_SESSION['message'] = "Update was successful.";
-                            //header('Location: account.php');
+                            header('Location: account.php');
                     }
                     catch(Exception $e) {
                         $_SESSION['message'] = "Something went wrong. Please try again.";

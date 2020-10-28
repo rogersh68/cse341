@@ -81,36 +81,65 @@ require 'common/upload.php';
                             $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
                             $userEmail = filter_input(INPUT_POST, 'useremail', FILTER_SANITIZE_EMAIL);
 
-                            //upload the img file and save filepath to db
-                            uploadFile('imgfile');
-                            $userImg = "images/".$_FILES['imgfile']['name'];
+                            if (!empty($_FILES['imgfile']['name'])) {
+                                //upload the img file and save filepath to db
+                                uploadFile('imgfile');
+                                $userImg = "images/".$_FILES['imgfile']['name'];
 
-                            if($userInfo['creator']) {
-                                $creatorDesc = filter_input(INPUT_POST, 'creatordesc', FILTER_SANITIZE_STRING);
-                                //update creator info on database
-                                $stmt = $db->prepare('UPDATE public.user 
-                                SET firstname=:firstname, lastname=:lastname, userimg=:userimg, useremail=:useremail, creatordesc=:creatordesc 
-                                WHERE userid=:userid');
-                                $stmt->bindValue(':userid', $userId, PDO::PARAM_INT);
-                                $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
-                                $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
-                                $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
-                                $stmt->bindValue(':creatordesc', $creatorDesc, PDO::PARAM_STR);
-                                $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
-                                $stmt->execute();
+                                if($userInfo['creator']) {
+                                    $creatorDesc = filter_input(INPUT_POST, 'creatordesc', FILTER_SANITIZE_STRING);
+                                    //update creator info on database
+                                    $stmt = $db->prepare('UPDATE public.user 
+                                    SET firstname=:firstname, lastname=:lastname, userimg=:userimg, useremail=:useremail, creatordesc=:creatordesc 
+                                    WHERE userid=:userid');
+                                    $stmt->bindValue(':userid', $userId, PDO::PARAM_INT);
+                                    $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+                                    $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+                                    $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
+                                    $stmt->bindValue(':creatordesc', $creatorDesc, PDO::PARAM_STR);
+                                    $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
+                                    $stmt->execute();
+                                }
+                                else {
+                                    //update user info on database
+                                    $stmt = $db->prepare('UPDATE public.user 
+                                    SET firstname=:firstname, lastname=:lastname, userimg=:userimg, useremail=:useremail 
+                                    WHERE userid=:userid');
+                                    $stmt->bindValue(':userid', $userId, PDO::PARAM_INT);
+                                    $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+                                    $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+                                    $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
+                                    $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
+                                    $stmt->execute();
+                                }
                             }
                             else {
-                                //update user info on database
-                                $stmt = $db->prepare('UPDATE public.user 
-                                SET firstname=:firstname, lastname=:lastname, userimg=:userimg, useremail=:useremail 
-                                WHERE userid=:userid');
-                                $stmt->bindValue(':userid', $userId, PDO::PARAM_INT);
-                                $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
-                                $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
-                                $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
-                                $stmt->bindValue(':userimg', $userImg, PDO::PARAM_STR);
-                                $stmt->execute();
+                                if($userInfo['creator']) {
+                                    $creatorDesc = filter_input(INPUT_POST, 'creatordesc', FILTER_SANITIZE_STRING);
+                                    //update creator info on database
+                                    $stmt = $db->prepare('UPDATE public.user 
+                                    SET firstname=:firstname, lastname=:lastname, useremail=:useremail, creatordesc=:creatordesc 
+                                    WHERE userid=:userid');
+                                    $stmt->bindValue(':userid', $userId, PDO::PARAM_INT);
+                                    $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+                                    $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+                                    $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
+                                    $stmt->bindValue(':creatordesc', $creatorDesc, PDO::PARAM_STR);
+                                    $stmt->execute();
+                                }
+                                else {
+                                    //update user info on database
+                                    $stmt = $db->prepare('UPDATE public.user 
+                                    SET firstname=:firstname, lastname=:lastname, useremail=:useremail 
+                                    WHERE userid=:userid');
+                                    $stmt->bindValue(':userid', $userId, PDO::PARAM_INT);
+                                    $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+                                    $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+                                    $stmt->bindValue(':useremail', $userEmail, PDO::PARAM_STR);
+                                    $stmt->execute();
+                                }
                             }
+                            
                             
                             $_SESSION['message'] = "Update was successful.";
                             header('Location: account.php');

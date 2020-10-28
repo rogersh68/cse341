@@ -41,13 +41,17 @@ require 'common/upload.php';
             try {
                 $invName = filter_input(INPUT_POST, 'invname', FILTER_SANITIZE_STRING);
                 $invDesc = filter_input(INPUT_POST, 'invdesc', FILTER_SANITIZE_STRING);
-
-                //upload the img file and save filepath to db
-                uploadFile('imgfile');
-                $invImg = "images/".$_FILES['imgfile']['name'];
-
                 $creatorId = $_SESSION['user_info']['userid'];
-    
+
+                if (!empty($_FILES['imgfile']['name'])) {
+                    //upload the img file and save filepath to db
+                    uploadFile('imgfile');
+                    $invImg = "images/".$_FILES['imgfile']['name'];
+                }
+                else {
+                    $invImg = "images/inv_placeholder.svg";
+                }
+                
                 //insert item into db
                 $stmt = $db->prepare('INSERT INTO inventory (invname, invdesc, invimg, creatorid) VALUES (:invname, :invdesc, :invimg, :creatorid)');
                 $stmt->bindValue(':invname', $invName, PDO::PARAM_STR);
@@ -55,6 +59,7 @@ require 'common/upload.php';
                 $stmt->bindValue(':invimg', $invImg, PDO::PARAM_STR);
                 $stmt->bindValue(':creatorid', $creatorId, PDO::PARAM_INT);
                 $stmt->execute();
+                
                 $_SESSION['message'] = "New item successfully added.";
                 header('Location: account.php');
             }
